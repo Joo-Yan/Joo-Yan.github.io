@@ -1,5 +1,5 @@
 /* ─── Google Fonts ─────────────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap');
 
 @import "tailwindcss";
 
@@ -8,11 +8,11 @@
   --color-bg:      #FAFAF8;
   --color-text:    #1A1A1A;
   --color-accent:  #C4A882;
-  --color-muted:   #888880;
+  --color-muted:   #5C5C56;
   --color-border:  #E8E4DC;
 
-  --font-serif:  'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
-  --font-sans:   'DM Sans', 'Noto Serif SC', system-ui, sans-serif;
+  --font-sans:   -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial,
+                 'PingFang SC', 'Noto Sans SC', 'Hiragino Sans GB', sans-serif;
 }
 
 /* ─── Base ──────────────────────────────────────────────────────────────────── */
@@ -30,9 +30,9 @@ body {
 
 /* ─── Typography ────────────────────────────────────────────────────────────── */
 h1, h2, h3 {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  letter-spacing: 0.02em;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 /* ─── Fade-in animation ─────────────────────────────────────────────────────── */

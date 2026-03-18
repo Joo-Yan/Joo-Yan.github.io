@@ -49,7 +49,7 @@ const enabledLanguages: Lang[] = ['en'];
           {navItems.map(item => (
             <li>
               <a href={item.href}
-                 class="text-sm tracking-wider transition-colors duration-200"
+                 class="text-base tracking-wider transition-colors duration-200"
                  style={`color: ${currentPath === item.href || (item.key === 'home' && currentPath === `/${lang}`) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none;`}
                  onmouseover="this.style.color='var(--color-text)'"
                  onmouseout={`this.style.color='${currentPath === item.href ? 'var(--color-accent)' : 'var(--color-muted)'}'`}>
@@ -59,7 +59,7 @@ const enabledLanguages: Lang[] = ['en'];
           ))}
           <!-- Blog: disabled, coming soon -->
           <li>
-            <span class="text-sm tracking-wider cursor-default"
+            <span class="text-base tracking-wider cursor-default"
                   style="color: var(--color-border);"
                   title={tr.nav.blogSoon}>
               {tr.nav.blog}

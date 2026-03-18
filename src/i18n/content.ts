@@ -62,6 +62,7 @@ export const projects = [
     demo: null, // 填入 GitHub Pages 链接
     repo: null,
     wip: true,
+    featuredOnHome: false,
   },
   {
     id: 'mastodon',
@@ -79,6 +80,8 @@ export const projects = [
     demo: null,
     repo: null,
     wip: false,
+    period: '2023 – Present',
+    featuredOnHome: true,
   },
   {
     id: 'speaking-assessment',
@@ -96,6 +99,8 @@ export const projects = [
     demo: null,
     repo: null,
     wip: false,
+    period: '2024',
+    featuredOnHome: true,
   },
   {
     id: 'ml-coursework',
@@ -113,6 +118,7 @@ export const projects = [
     demo: null,
     repo: null,
     wip: false,
+    featuredOnHome: false,
   },
 ];
 

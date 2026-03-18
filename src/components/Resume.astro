@@ -8,6 +8,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const tr = t(lang);
+const homeProjects = projects.filter(project => project.featuredOnHome);
 ---
 
 <section class="max-w-4xl mx-auto px-6 pb-24"
@@ -15,7 +16,7 @@ const tr = t(lang);
 
   <!-- ── Education ─────────────────────────────────────────────────── -->
   <div class="pt-14 pb-12">
-    <h2 class="text-xs tracking-widest uppercase mb-8"
+    <h2 class="text-sm tracking-widest uppercase mb-8"
         style="color: var(--color-accent);">
       {tr.resume.education}
     </h2>
@@ -25,14 +26,14 @@ const tr = t(lang);
         <div class="grid md:grid-cols-3 gap-2 md:gap-6">
           <!-- School + degree -->
           <div class="md:col-span-2">
-            <p class="font-serif text-xl font-light" style="color: var(--color-text);">
+            <p class="text-xl font-medium" style="color: var(--color-text);">
               {edu.school}
             </p>
-            <p class="text-sm mt-1" style="color: var(--color-muted);">
+            <p class="text-base mt-1" style="color: var(--color-muted);">
               {edu.degree[lang]}
             </p>
             {edu.note && (
-              <p class="text-xs mt-1 italic" style="color: var(--color-muted);">
+              <p class="text-sm mt-1 italic" style="color: var(--color-muted);">
                 {edu.note[lang]}
               </p>
             )}
@@ -49,7 +50,7 @@ const tr = t(lang);
 
   <!-- ── Skills ────────────────────────────────────────────────────── -->
   <div class="py-12" style="border-top: 1px solid var(--color-border);">
-    <h2 class="text-xs tracking-widest uppercase mb-8"
+    <h2 class="text-sm tracking-widest uppercase mb-8"
         style="color: var(--color-accent);">
       {tr.resume.skills}
     </h2>
@@ -57,7 +58,7 @@ const tr = t(lang);
     <div class="space-y-4">
       {Object.entries(skills).map(([category, items]) => (
         <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6">
-          <span class="text-xs tracking-widest uppercase w-32 shrink-0"
+          <span class="text-sm tracking-widest uppercase w-32 shrink-0"
                 style="color: var(--color-muted);">
             {tr.resume.skillCategories[category as keyof typeof tr.resume.skillCategories]}
           </span>
@@ -76,26 +77,33 @@ const tr = t(lang);
 
   <!-- ── Projects (summary list) ───────────────────────────────────── -->
   <div class="py-12" style="border-top: 1px solid var(--color-border);">
-    <h2 class="text-xs tracking-widest uppercase mb-8"
+    <h2 class="text-sm tracking-widest uppercase mb-8"
         style="color: var(--color-accent);">
       {tr.resume.projects}
     </h2>
 
     <div class="space-y-6">
-      {projects.map(project => (
+      {homeProjects.map(project => (
         <div class="flex flex-col md:flex-row md:items-start gap-1 md:gap-6">
-          <div class="flex items-center gap-3 md:w-64 shrink-0">
-            <p class="font-serif text-lg font-light" style="color: var(--color-text);">
-              {project.title[lang]}
-            </p>
-            {project.wip && (
-              <span class="text-xs px-2 py-0.5 tracking-wider"
-                    style="border: 1px solid var(--color-accent); color: var(--color-accent);">
-                {tr.projects.wip}
-              </span>
+          <div class="md:w-64 shrink-0">
+            <div class="flex items-center gap-3">
+              <p class="text-lg font-medium" style="color: var(--color-text);">
+                {project.title[lang]}
+              </p>
+              {project.wip && (
+                <span class="text-xs px-2 py-0.5 tracking-wider"
+                      style="border: 1px solid var(--color-accent); color: var(--color-accent);">
+                  {tr.projects.wip}
+                </span>
+              )}
+            </div>
+            {project.period && (
+              <p class="text-xs tracking-wider uppercase mt-1" style="color: var(--color-muted);">
+                {project.period}
+              </p>
             )}
           </div>
-          <p class="text-sm leading-relaxed flex-1" style="color: var(--color-muted);">
+          <p class="text-base leading-relaxed flex-1" style="color: var(--color-text);">
             {project.description[lang]}
           </p>
         </div>
