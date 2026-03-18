@@ -125,19 +125,19 @@ export const projects = [
 // ─── About (Cover Letter) ─────────────────────────────────────────────────────
 
 export const aboutText: Record<Lang, string[]> = {
-  zh: [
-    '我叫 YU Zhuoyan，目前在法国巴黎的 Télécom SudParis 攻读工程师文凭。在此之前，我在香港中文大学（深圳）完成了计算机科学与工程本科学位，并在 2024 年春赴 ISEP 巴黎进行了为期一学期的交流。',
-    '我对信息与技术抱有持续的好奇心，尤其对数据与开发的交汇地带感兴趣——无论是构建一个能处理真实数据的 web 应用，还是用可视化让数据「开口说话」。我习惯将 AI 工具融入日常工作流程，并以此提升效率与创造力。',
-    '目前我仍在探索自己的职业方向，对数据工程、全栈开发和 AI 产品均有兴趣。如果你在寻找一个学习快、主动性强、能用英语流畅沟通的实习生，欢迎联系我。',
-  ],
+  zh: [],
   en: [
-    'I\'m YU Zhuoyan, currently studying at Télécom SudParis in Paris. Before that, I completed a BSc in Computer Science & Engineering at CUHK Shenzhen, with an exchange semester at ISEP Paris in spring 2024.',
-    'I\'m drawn to the intersection of data and development — building web products that do something real with data, or making data legible through visualization. I use AI coding assistants as a standard part of my workflow, and I work in English daily.',
-    'I\'m still exploring my direction — interested in data engineering, full-stack development, and AI-enabled products. If you\'re looking for someone who learns fast, stays curious, and communicates clearly in English, I\'d love to connect.',
+    'I\'m Zhuoyan — most people call me Yan, it\'s easier to pronounce. I\'m a second-year engineering student at Télécom SudParis; before coming here, I completed my bachelor\'s degree in Computer Science and Engineering at the Chinese University of Hong Kong, Shenzhen.',
+    'I\'m interested in decentralization. I run a personal Mastodon instance and a WriteFreely blog, but they\'re too personal to share here. I follow web3 as well, more as a question about infrastructure and community than as an investment.',
+    'I read novels. Maybe that\'s part of why freedom of expression matters to me. I try to write too, though never with enough time.',
+    'I\'m not good at small talk, and I sometimes may seem cold. To anyone who knows me in person and has felt that way, I want to say: it\'s not that. I like people, I just don\'t always know what to do in social situations. I considered cutting this paragraph since I\'m looking for opportunities — but maybe I should accept myself. I want to be clear though: I communicate fine and I work well with others.',
+    'I\'m trying to find a technical direction to dig deeper, while allocating more of my attention to things that really matter and continuing to write. One person\'s power is small. I wish for peace, and for myself and more people to live free from fear.',
   ],
   fr: [
-    'Je m\'appelle YU Zhuoyan, étudiante en 2e année à Télécom SudParis à Paris. Auparavant, j\'ai obtenu une licence en informatique à CUHK Shenzhen, avec un semestre d\'échange à l\'ISEP Paris au printemps 2024.',
-    'Je suis attirée par l\'intersection entre données et développement — créer des produits web qui exploitent des données réelles, ou rendre les données lisibles grâce à la visualisation. J\'intègre les outils d\'IA dans mon flux de travail quotidien et travaille couramment en anglais.',
-    'Je suis encore en train d\'explorer mon orientation professionnelle — intéressée par l\'ingénierie des données, le développement full-stack et les produits intégrant l\'IA. Si vous cherchez quelqu\'un qui apprend vite, reste curieux et communique clairement, n\'hésitez pas à me contacter.',
+    'Je m\'appelle Zhuoyan — la plupart des gens m\'appellent Yan, c\'est plus facile à prononcer. Je suis en deuxième année d\'école d\'ingénieur à Télécom SudParis ; avant ça, j\'ai fait mon bachelor en informatique et génie logiciel à l\'Université chinoise de Hong Kong, Shenzhen.',
+    'Je m\'intéresse à la décentralisation. Je gère une instance Mastodon et un blog WriteFreely, mais ils sont trop personnels pour être partagés ici. Je suis aussi le web3, plutôt comme une question d\'infrastructure et de communauté que d\'investissement.',
+    'Je lis des romans. C\'est peut-être pour ça que la liberté d\'expression compte pour moi. J\'essaie d\'écrire aussi, mais le temps manque toujours.',
+    'Je ne suis pas douée pour le small talk, et je peux parfois paraître froide. À ceux qui me connaissent en vrai et l\'ont ressenti : ce n\'est pas ça. J\'aime les gens, je ne sais juste pas toujours quoi faire dans les situations sociales. J\'ai failli supprimer ce paragraphe parce que je cherche des opportunités — mais peut-être que je devrais m\'accepter. Je veux quand même être claire : je communique bien et je travaille bien avec les autres.',
+    'J\'essaie de trouver une direction technique dans laquelle aller plus loin, tout en consacrant plus d\'attention à ce qui compte vraiment, et en continuant d\'écrire. La force d\'une seule personne est bien petite. Je souhaite la paix, et que moi et d\'autres puissent vivre libres de la peur.',
   ],
 };

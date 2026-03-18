@@ -11,13 +11,17 @@ export const translations = {
       blogSoon: '即将推出',
     },
     hero: {
-      tagline: '工程专业在读 · 探索数据与开发',
+      tagline: '工程师在读 · 技术探索者',
       available: '巴黎 · 寻找实习与交替培训（2026）',
       github: 'GitHub',
       email: '邮箱',
     },
     brief: {
-      text: 'Télécom SudParis 工程专业二年级学生，本科毕业于香港中文大学（深圳）。热衷于构建结合 AI 能力的 Web 与数据应用，习惯将 AI 工具融入日常开发流程，使用英语作为主要工作语言。',
+      paragraphs: [
+        '在学信息技术，希望它能让人的生活更好——作为基础设施，作为表达的延伸，作为抵抗的筹码。',
+        '方向还没定：软件开发、网络、数据都有可能。走着瞧。',
+        '现在：造东西，拆东西，保持好奇，做力所能及的事。',
+      ],
     },
     resume: {
       education: '教育背景',
@@ -58,13 +62,17 @@ export const translations = {
       blogSoon: 'Coming soon',
     },
     hero: {
-      tagline: 'Engineering student · Data & development',
+      tagline: 'Engineering student · Tech explorer',
       available: 'Paris · Open to internships & alternance (2026)',
       github: 'GitHub',
       email: 'Email',
     },
     brief: {
-      text: 'Second-year engineering student at Télécom SudParis, CS degree from CUHK Shenzhen. Interested in building web products with AI components — full-stack development, API integration, and picking up new tools quickly. Work in English daily.',
+      paragraphs: [
+        'I\'m in informatics/computing wishing it would benefit people — as infrastructure, as a creative medium, as a tool of resistance.',
+        'Career direction still open: software engineering, networks, or data. We\'ll see.',
+        'For now: I build things, break things, stay curious, and do what I can.',
+      ],
     },
     resume: {
       education: 'Education',
@@ -105,13 +113,17 @@ export const translations = {
       blogSoon: 'Bientôt',
     },
     hero: {
-      tagline: 'Étudiante ingénieure · Données & développement',
+      tagline: 'Étudiante ingénieure · Exploratrice tech',
       available: 'Paris · Recherche stage / alternance (2026)',
       github: 'GitHub',
       email: 'E-mail',
     },
     brief: {
-      text: 'Étudiante en 2e année à Télécom SudParis, diplômée en informatique de CUHK Shenzhen. Passionnée par la création de produits web intégrant l\'IA — développement full-stack, intégration d\'API, apprentissage rapide de nouveaux outils.',
+      paragraphs: [
+        'J\'étudie l\'informatique en espérant qu\'elle profite aux gens — infrastructure, prolongement de l\'expression, outil de résistance.',
+        'Orientation encore ouverte : développement logiciel, réseaux, données. On verra.',
+        'Pour l\'instant : je construis, je casse, je reste curieuse, et je fais ce que je peux.',
+      ],
     },
     resume: {
       education: 'Formation',
