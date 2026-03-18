@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Lang } from '../i18n/translations';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+}
+
+const { lang, title, description } = Astro.props;
+const tr = t(lang);
+
+const pageTitle = title
+  ? `${title} — YU Zhuoyan`
+  : 'YU Zhuoyan';
+
+const pageDescription = description
+  || (lang === 'zh' ? 'YU Zhuoyan 的个人网站' :
+      lang === 'fr' ? 'Site personnel de YU Zhuoyan' :
+                      'YU Zhuoyan — Personal website');
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={pageDescription} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{pageTitle}</title>
+
+    <!-- Alternate language links -->
+    <link rel="alternate" hreflang="zh" href={Astro.url.pathname.replace(/^\/(en|fr)/, '/zh')} />
+    <link rel="alternate" hreflang="en" href={Astro.url.pathname.replace(/^\/(zh|fr)/, '/en')} />
+    <link rel="alternate" hreflang="fr" href={Astro.url.pathname.replace(/^\/(zh|en)/, '/fr')} />
+  </head>
+  <body>
+    <Nav lang={lang} currentPath={Astro.url.pathname} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} tr={tr} />
+  </body>
+</html>

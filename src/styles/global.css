@@ -1,0 +1,46 @@
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Design tokens ────────────────────────────────────────────────────────── */
+:root {
+  --color-bg:      #FAFAF8;
+  --color-text:    #1A1A1A;
+  --color-accent:  #C4A882;
+  --color-muted:   #888880;
+  --color-border:  #E8E4DC;
+
+  --font-serif:  'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+  --font-sans:   'DM Sans', 'Noto Serif SC', system-ui, sans-serif;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* ─── Typography ────────────────────────────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Fade-in animation ─────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up              { animation: fadeUp 0.7s ease forwards; }
+.fade-up-delay-1      { animation-delay: 0.1s;  opacity: 0; }
+.fade-up-delay-2      { animation-delay: 0.25s; opacity: 0; }
+.fade-up-delay-3      { animation-delay: 0.4s;  opacity: 0; }

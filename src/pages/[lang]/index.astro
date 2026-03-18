@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import BriefIntro from '../../components/BriefIntro.astro';
+import Resume from '../../components/Resume.astro';
+import { LANGUAGES, type Lang } from '../../i18n/translations';
+
+export function getStaticPaths() {
+  return LANGUAGES.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+---
+
+<Layout lang={lang}>
+  <Hero lang={lang} />
+  <BriefIntro lang={lang} />
+  <Resume lang={lang} />
+</Layout>

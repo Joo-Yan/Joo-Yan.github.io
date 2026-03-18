@@ -1,0 +1,97 @@
+---
+import { t, LANGUAGES, type Lang } from '../i18n/translations';
+
+interface Props {
+  lang: Lang;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+const tr = t(lang);
+
+// Build path for a different language by replacing the language prefix
+function langPath(targetLang: Lang): string {
+  // e.g. /zh/projects → /en/projects
+  return currentPath.replace(/^\/(zh|en|fr)/, `/${targetLang}`);
+}
+
+// Build path for a nav item in the current language
+function navPath(page: string): string {
+  return page === 'home' ? `/${lang}` : `/${lang}/${page}`;
+}
+
+const navItems = [
+  { key: 'home',     label: tr.nav.home,     href: navPath('home') },
+  { key: 'projects', label: tr.nav.projects,  href: navPath('projects') },
+  { key: 'about',    label: tr.nav.about,     href: navPath('about') },
+];
+
+const langLabels: Record<Lang, string> = { zh: '中', en: 'EN', fr: 'FR' };
+const enabledLanguages: Lang[] = ['en'];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50" style="background-color: var(--color-bg);">
+  <div style="border-bottom: 1px solid var(--color-border);">
+    <nav class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+
+      <!-- Logo / Name -->
+      <a href={`/${lang}`}
+         class="font-serif text-lg tracking-widest"
+         style="color: var(--color-text); text-decoration: none;">
+        YU
+      </a>
+
+      <!-- Nav links + language switcher -->
+      <div class="flex items-center gap-8">
+
+        <!-- Page links -->
+        <ul class="flex items-center gap-6 list-none m-0 p-0">
+          {navItems.map(item => (
+            <li>
+              <a href={item.href}
+                 class="text-sm tracking-wider transition-colors duration-200"
+                 style={`color: ${currentPath === item.href || (item.key === 'home' && currentPath === `/${lang}`) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none;`}
+                 onmouseover="this.style.color='var(--color-text)'"
+                 onmouseout={`this.style.color='${currentPath === item.href ? 'var(--color-accent)' : 'var(--color-muted)'}'`}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <!-- Blog: disabled, coming soon -->
+          <li>
+            <span class="text-sm tracking-wider cursor-default"
+                  style="color: var(--color-border);"
+                  title={tr.nav.blogSoon}>
+              {tr.nav.blog}
+            </span>
+          </li>
+        </ul>
+
+        <!-- Language switcher -->
+        <div class="flex items-center gap-2 text-xs tracking-widest"
+             style="border-left: 1px solid var(--color-border); padding-left: 1.5rem;">
+          {LANGUAGES.map((l, i) => (
+            <>
+              {i > 0 && <span style="color: var(--color-border);">·</span>}
+              {!enabledLanguages.includes(l)
+                ? <span style="color: var(--color-border); cursor: not-allowed;">{langLabels[l]}</span>
+                : l === lang
+                ? <span style="color: var(--color-accent);">{langLabels[l]}</span>
+                : <a href={langPath(l)}
+                     style="color: var(--color-muted); text-decoration: none;"
+                     onmouseover="this.style.color='var(--color-text)'"
+                     onmouseout="this.style.color='var(--color-muted)'">
+                     {langLabels[l]}
+                   </a>
+              }
+            </>
+          ))}
+        </div>
+
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Spacer so content doesn't hide under fixed nav -->
+<div class="h-14"></div>
