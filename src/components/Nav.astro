@@ -35,7 +35,7 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
 
 <header class="fixed top-0 left-0 right-0 z-50" style="background-color: var(--color-bg);">
   <div style="border-bottom: 1px solid var(--color-border);">
-    <nav class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+    <nav class="max-w-4xl mx-auto px-6 flex items-center justify-between" style="height: 56px;">
 
       <!-- Logo / Name -->
       <a href={withBase(homePath)}
@@ -44,8 +44,8 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
         Yan
       </a>
 
-      <!-- Nav links + language switcher -->
-      <div class="flex items-center gap-8">
+      <!-- Desktop: Nav links + language switcher -->
+      <div class="hidden sm:flex items-center gap-8">
 
         <!-- Page links -->
         <ul class="flex items-center gap-6 list-none m-0 p-0">
@@ -92,9 +92,69 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
         </div>
 
       </div>
+
+      <!-- Mobile: hamburger button -->
+      <button id="mobile-menu-btn"
+              class="sm:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8"
+              style="background: none; border: none; cursor: pointer; padding: 0;"
+              aria-label="Toggle menu">
+        <span class="menu-bar block w-5 h-px transition-all duration-200" style="background-color: var(--color-text);"></span>
+        <span class="menu-bar block w-5 h-px transition-all duration-200" style="background-color: var(--color-text);"></span>
+        <span class="menu-bar block w-5 h-px transition-all duration-200" style="background-color: var(--color-text);"></span>
+      </button>
+
     </nav>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu"
+       class="sm:hidden hidden"
+       style="background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex flex-col gap-4">
+
+      <!-- Mobile nav links -->
+      {navItems.map(item => (
+        <a href={item.href}
+           class="text-base tracking-wider"
+           style={`color: ${currentPath === item.current || (item.key === 'home' && currentPagePath === item.href) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none;`}>
+          {item.label}
+        </a>
+      ))}
+      <span class="text-base tracking-wider cursor-default"
+            style="color: var(--color-disabled);"
+            title={tr.nav.blogSoon}>
+        {tr.nav.blog}
+      </span>
+
+      <!-- Mobile language switcher -->
+      <div class="flex items-center gap-2 text-xs tracking-widest pt-2"
+           style="border-top: 1px solid var(--color-border);">
+        {LANGUAGES.map((l, i) => (
+          <>
+            {i > 0 && <span style="color: var(--color-disabled);">·</span>}
+            {!enabledLanguages.includes(l)
+              ? <span style="color: var(--color-disabled); cursor: not-allowed;">{langLabels[l]}</span>
+              : l === lang
+              ? <span style="color: var(--color-accent);">{langLabels[l]}</span>
+              : <a href={langPath(l)}
+                   style="color: var(--color-muted); text-decoration: none;">
+                   {langLabels[l]}
+                 </a>
+            }
+          </>
+        ))}
+      </div>
+    </div>
   </div>
 </header>
 
 <!-- Spacer so content doesn't hide under fixed nav -->
-<div class="h-14"></div>
+<div style="height: 56px;"></div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

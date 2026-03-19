@@ -19,11 +19,11 @@ const paragraphs = isEmpty ? [] : entry!.body!.trim().split(/\n\n+/);
 ---
 
 <Layout lang={lang} title={tr.about.title} htmlClass="page-about">
-  <section class="max-w-4xl mx-auto px-6 pt-16 pb-24">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-16 sm:pb-24">
 
     <!-- Page heading -->
-    <div class="mb-16">
-      <h1 class="font-serif text-5xl font-light" style="color: var(--color-text);">
+    <div class="mb-10 sm:mb-16">
+      <h1 class="font-serif text-3xl sm:text-5xl font-light" style="color: var(--color-text);">
         {tr.about.title}
       </h1>
       <div class="mt-4" style="width: 3rem; height: 1px; background-color: var(--color-accent);"></div>
