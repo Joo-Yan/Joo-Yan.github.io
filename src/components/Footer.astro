@@ -16,8 +16,15 @@ const { tr } = Astro.props;
     <p class="text-xs tracking-wider" style="color: var(--color-muted);">
       YU Zhuoyan
     </p>
-    <p class="text-xs tracking-wider" style="color: var(--color-border);">
-      {tr.footer.built}
-    </p>
+    <div class="text-right">
+      {tr.footer.translationNote && (
+        <p class="text-xs tracking-wider mb-1" style="color: var(--color-muted); font-style: italic;">
+          {tr.footer.translationNote}
+        </p>
+      )}
+      <p class="text-xs tracking-wider" style="color: var(--color-muted);">
+        {tr.footer.built}
+      </p>
+    </div>
   </div>
 </footer>

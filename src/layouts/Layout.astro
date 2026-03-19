@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import AccessibilityControls from '../components/AccessibilityControls.astro';
 import { t, type Lang } from '../i18n/translations';
 import { stripBase, withBase } from '../utils/paths';
 
@@ -9,9 +10,10 @@ interface Props {
   lang: Lang;
   title?: string;
   description?: string;
+  htmlClass?: string;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, htmlClass } = Astro.props;
 const tr = t(lang);
 const currentPath = stripBase(Astro.url.pathname);
 
@@ -26,13 +28,23 @@ const pageDescription = description
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class={htmlClass}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={pageDescription} />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <title>{pageTitle}</title>
+
+    <!-- Anti-FOUC: restore accessibility preferences before first paint -->
+    <script>
+      (function () {
+        var s = localStorage.getItem('a11y-size');
+        var f = localStorage.getItem('a11y-font');
+        if (s === 'large') document.documentElement.classList.add('text-large');
+        if (f === 'readable') document.documentElement.classList.add('font-readable');
+      })();
+    </script>
 
     <!-- Alternate language links -->
     <link rel="alternate" hreflang="zh" href={withBase(currentPath.replace(/^\/(en|fr)/, '/zh'))} />
@@ -45,5 +57,6 @@ const pageDescription = description
       <slot />
     </main>
     <Footer lang={lang} tr={tr} />
+    <AccessibilityControls />
   </body>
 </html>

@@ -50,6 +50,7 @@ export const translations = {
     },
     footer: {
       built: '用 Astro 搭建',
+      translationNote: '',
     },
   },
 
@@ -101,6 +102,7 @@ export const translations = {
     },
     footer: {
       built: 'Built with Astro',
+      translationNote: '',
     },
   },
 
@@ -152,6 +154,7 @@ export const translations = {
     },
     footer: {
       built: 'Construit avec Astro',
+      translationNote: 'Rédigé en anglais · traduit automatiquement en français',
     },
   },
 } satisfies Record<Lang, typeof translations['zh']>;

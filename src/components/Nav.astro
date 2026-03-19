@@ -63,7 +63,7 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
           <!-- Blog: disabled, coming soon -->
           <li>
             <span class="text-base tracking-wider cursor-default"
-                  style="color: var(--color-border);"
+                  style="color: var(--color-disabled);"
                   title={tr.nav.blogSoon}>
               {tr.nav.blog}
             </span>
@@ -75,9 +75,9 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
              style="border-left: 1px solid var(--color-border); padding-left: 1.5rem;">
           {LANGUAGES.map((l, i) => (
             <>
-              {i > 0 && <span style="color: var(--color-border);">·</span>}
+              {i > 0 && <span style="color: var(--color-disabled);">·</span>}
               {!enabledLanguages.includes(l)
-                ? <span style="color: var(--color-border); cursor: not-allowed;">{langLabels[l]}</span>
+                ? <span style="color: var(--color-disabled); cursor: not-allowed;">{langLabels[l]}</span>
                 : l === lang
                 ? <span style="color: var(--color-accent);">{langLabels[l]}</span>
                 : <a href={langPath(l)}

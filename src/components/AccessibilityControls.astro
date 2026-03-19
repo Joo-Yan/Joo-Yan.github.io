@@ -1,0 +1,174 @@
+---
+// Accessibility controls: font size toggle + font family toggle
+// State is persisted in localStorage and restored by the anti-FOUC script in Layout.astro
+---
+
+<div
+  id="a11y-controls"
+  aria-label="Accessibility controls"
+  style="
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 9999;
+  "
+>
+  <!-- Font size group -->
+  <div style="display: flex; gap: 0.375rem;">
+    <button
+      id="btn-size-normal"
+      aria-label="Normal font size"
+      title="Normal font size"
+      style="
+        padding: 0.25rem 0.625rem;
+        border: 1px solid var(--color-border);
+        background: transparent;
+        color: var(--color-muted);
+        font-family: var(--font-sans);
+        font-size: 0.875rem;
+        cursor: pointer;
+        border-radius: 2px;
+        line-height: 1.4;
+        transition: color 0.15s, border-color 0.15s;
+      "
+    >A</button>
+    <button
+      id="btn-size-large"
+      aria-label="Large font size"
+      title="Large font size"
+      style="
+        padding: 0.25rem 0.625rem;
+        border: 1px solid var(--color-border);
+        background: transparent;
+        color: var(--color-muted);
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 2px;
+        line-height: 1.4;
+        transition: color 0.15s, border-color 0.15s;
+      "
+    >A⁺</button>
+  </div>
+
+  <!-- Font family group -->
+  <div style="display: flex; gap: 0.375rem;">
+    <button
+      id="btn-font-design"
+      aria-label="Design font (Cormorant / Lora)"
+      title="Design font"
+      style="
+        padding: 0.25rem 0.625rem;
+        border: 1px solid var(--color-border);
+        background: transparent;
+        color: var(--color-muted);
+        font-family: var(--font-sans);
+        font-size: 0.875rem;
+        cursor: pointer;
+        border-radius: 2px;
+        line-height: 1.4;
+        transition: color 0.15s, border-color 0.15s;
+      "
+    >Aa</button>
+    <button
+      id="btn-font-readable"
+      aria-label="System sans-serif font (more readable)"
+      title="Readable font"
+      style="
+        padding: 0.25rem 0.625rem;
+        border: 1px solid var(--color-border);
+        background: transparent;
+        color: var(--color-muted);
+        font-family: system-ui, -apple-system, Arial, sans-serif;
+        font-size: 0.875rem;
+        cursor: pointer;
+        border-radius: 2px;
+        line-height: 1.4;
+        transition: color 0.15s, border-color 0.15s;
+      "
+    >Ab</button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var html = document.documentElement;
+    var ACTIVE_STYLE = 'color: var(--color-accent); border-color: var(--color-accent);';
+    var INACTIVE_STYLE = 'color: var(--color-muted); border-color: var(--color-border);';
+
+    var btnSizeNormal  = document.getElementById('btn-size-normal');
+    var btnSizeLarge   = document.getElementById('btn-size-large');
+    var btnFontDesign  = document.getElementById('btn-font-design');
+    var btnFontReadable = document.getElementById('btn-font-readable');
+
+    function syncSizeButtons() {
+      var isLarge = html.classList.contains('text-large');
+      // Reset base styles then apply active indicator inline
+      btnSizeNormal.removeAttribute('data-active');
+      btnSizeLarge.removeAttribute('data-active');
+      if (isLarge) {
+        btnSizeLarge.setAttribute('data-active', '');
+        btnSizeLarge.style.color = 'var(--color-accent)';
+        btnSizeLarge.style.borderColor = 'var(--color-accent)';
+        btnSizeNormal.style.color = 'var(--color-muted)';
+        btnSizeNormal.style.borderColor = 'var(--color-border)';
+      } else {
+        btnSizeNormal.setAttribute('data-active', '');
+        btnSizeNormal.style.color = 'var(--color-accent)';
+        btnSizeNormal.style.borderColor = 'var(--color-accent)';
+        btnSizeLarge.style.color = 'var(--color-muted)';
+        btnSizeLarge.style.borderColor = 'var(--color-border)';
+      }
+    }
+
+    function syncFontButtons() {
+      var isReadable = html.classList.contains('font-readable');
+      if (isReadable) {
+        btnFontReadable.setAttribute('data-active', '');
+        btnFontReadable.style.color = 'var(--color-accent)';
+        btnFontReadable.style.borderColor = 'var(--color-accent)';
+        btnFontDesign.removeAttribute('data-active');
+        btnFontDesign.style.color = 'var(--color-muted)';
+        btnFontDesign.style.borderColor = 'var(--color-border)';
+      } else {
+        btnFontDesign.setAttribute('data-active', '');
+        btnFontDesign.style.color = 'var(--color-accent)';
+        btnFontDesign.style.borderColor = 'var(--color-accent)';
+        btnFontReadable.removeAttribute('data-active');
+        btnFontReadable.style.color = 'var(--color-muted)';
+        btnFontReadable.style.borderColor = 'var(--color-border)';
+      }
+    }
+
+    btnSizeNormal.addEventListener('click', function () {
+      html.classList.remove('text-large');
+      localStorage.setItem('a11y-size', 'normal');
+      syncSizeButtons();
+    });
+
+    btnSizeLarge.addEventListener('click', function () {
+      html.classList.add('text-large');
+      localStorage.setItem('a11y-size', 'large');
+      syncSizeButtons();
+    });
+
+    btnFontDesign.addEventListener('click', function () {
+      html.classList.remove('font-readable');
+      localStorage.setItem('a11y-font', 'design');
+      syncFontButtons();
+    });
+
+    btnFontReadable.addEventListener('click', function () {
+      html.classList.add('font-readable');
+      localStorage.setItem('a11y-font', 'readable');
+      syncFontButtons();
+    });
+
+    // Initialise button states to match current html classes (set by anti-FOUC script)
+    syncSizeButtons();
+    syncFontButtons();
+  })();
+</script>
