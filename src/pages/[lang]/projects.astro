@@ -28,9 +28,13 @@ const tr = t(lang);
         <article style="border-top: 1px solid var(--color-border); padding-top: 2.5rem;">
           <div class="flex items-start justify-between gap-4 mb-4">
             <div class="flex items-center gap-3">
-              <h2 class="font-serif text-2xl font-light" style="color: var(--color-text);">
+              <a href={`/${lang}/projects/${project.id}`}
+                 class="font-serif text-2xl font-light transition-colors duration-200"
+                 style="color: var(--color-text); text-decoration: none;"
+                 onmouseover="this.style.color='var(--color-accent)'"
+                 onmouseout="this.style.color='var(--color-text)'">
                 {project.title[lang]}
-              </h2>
+              </a>
               {project.wip && (
                 <span class="text-xs px-2 py-0.5 tracking-wider shrink-0"
                       style="border: 1px solid var(--color-accent); color: var(--color-accent);">
@@ -45,9 +49,9 @@ const tr = t(lang);
                    target="_blank"
                    rel="noopener noreferrer"
                    class="text-xs tracking-widest uppercase transition-colors duration-200"
-                   style="color: var(--color-accent); text-decoration: none;"
+                   style="color: var(--color-muted); text-decoration: none;"
                    onmouseover="this.style.color='var(--color-text)'"
-                   onmouseout="this.style.color='var(--color-accent)'">
+                   onmouseout="this.style.color='var(--color-muted)'">
                   {tr.projects.demo} ↗
                 </a>
               )}

@@ -1,0 +1,182 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { LANGUAGES, t, type Lang } from '../../../i18n/translations';
+import { projects } from '../../../i18n/content';
+
+export function getStaticPaths() {
+  return LANGUAGES.flatMap(lang =>
+    projects.map(project => ({
+      params: { lang, id: project.id },
+    }))
+  );
+}
+
+const { lang, id } = Astro.params as { lang: Lang; id: string };
+const tr = t(lang);
+const project = projects.find(p => p.id === id)!;
+const ld = project.longDescription;
+---
+
+<Layout lang={lang} title={project.title[lang]}>
+  <article class="max-w-3xl mx-auto px-6 pt-16 pb-24">
+
+    <!-- Back link -->
+    <div class="mb-12">
+      <a href={`/${lang}/projects`}
+         class="text-xs tracking-widest uppercase transition-colors duration-200"
+         style="color: var(--color-muted); text-decoration: none;"
+         onmouseover="this.style.color='var(--color-text)'"
+         onmouseout="this.style.color='var(--color-muted)'">
+        ← {tr.projects.title}
+      </a>
+    </div>
+
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex items-start gap-4 mb-4 flex-wrap">
+        <h1 class="font-serif text-4xl md:text-5xl font-light" style="color: var(--color-text);">
+          {project.title[lang]}
+        </h1>
+        {project.wip && (
+          <span class="text-xs px-2 py-1 tracking-wider self-center"
+                style="border: 1px solid var(--color-accent); color: var(--color-accent);">
+            {tr.projects.wip}
+          </span>
+        )}
+      </div>
+
+      {ld?.tagline && (
+        <p class="text-lg md:text-xl font-light mb-6" style="color: var(--color-muted);">
+          {ld.tagline[lang]}
+        </p>
+      )}
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        {project.tags.map(tag => (
+          <span class="text-xs px-2 py-1 tracking-wider"
+                style="background-color: var(--color-border); color: var(--color-muted);">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <!-- Links -->
+      {(project.demo || project.repo) && (
+        <div class="flex items-center gap-6">
+          {project.demo && (
+            <a href={project.demo}
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-sm tracking-widest uppercase transition-colors duration-200"
+               style="color: var(--color-muted); text-decoration: none;"
+               onmouseover="this.style.color='var(--color-text)'"
+               onmouseout="this.style.color='var(--color-muted)'">
+              {tr.projects.demo} ↗
+            </a>
+          )}
+          {project.repo && (
+            <a href={project.repo}
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-sm tracking-widest uppercase transition-colors duration-200"
+               style="color: var(--color-muted); text-decoration: none;"
+               onmouseover="this.style.color='var(--color-text)'"
+               onmouseout="this.style.color='var(--color-muted)'">
+              {tr.projects.code} ↗
+            </a>
+          )}
+        </div>
+      )}
+
+      <div class="mt-8" style="width: 3rem; height: 1px; background-color: var(--color-accent);"></div>
+    </header>
+
+    <!-- Long description -->
+    {ld ? (
+      <div class="space-y-12">
+        {ld.sections.map(section => (
+          <section>
+            {section.heading && (
+              <h2 class="font-serif text-2xl font-light mb-5" style="color: var(--color-text);">
+                {section.heading[lang]}
+              </h2>
+            )}
+
+            {section.paragraphs && (
+              <div class="space-y-4">
+                {section.paragraphs[lang].map((para: string) => (
+                  <p class="text-base leading-relaxed" style="color: var(--color-muted);">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            )}
+
+            {'list' in section && section.list && (
+              <ul class="my-4 space-y-2 pl-4">
+                {section.list[lang].map((item: string) => (
+                  <li class="text-base leading-relaxed" style="color: var(--color-muted);">
+                    <span style="color: var(--color-accent); margin-right: 0.5rem;">—</span>{item}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {'closingParagraphs' in section && section.closingParagraphs && (
+              <div class="space-y-4 mt-4">
+                {section.closingParagraphs[lang].map((para: string) => (
+                  <p class="text-base leading-relaxed" style="color: var(--color-muted);">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            )}
+          </section>
+        ))}
+
+        <!-- Tech stack -->
+        {ld.techStack && ld.techStack.length > 0 && (
+          <section>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm" style="border-collapse: collapse;">
+                <thead>
+                  <tr style="border-bottom: 1px solid var(--color-border);">
+                    <th class="text-left py-2 pr-8 text-xs tracking-widest uppercase font-normal"
+                        style="color: var(--color-accent);">
+                      {lang === 'zh' ? '层次' : lang === 'fr' ? 'Couche' : 'Layer'}
+                    </th>
+                    <th class="text-left py-2 text-xs tracking-widest uppercase font-normal"
+                        style="color: var(--color-accent);">
+                      {lang === 'zh' ? '工具' : lang === 'fr' ? 'Outils' : 'Tools'}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ld.techStack.map(row => (
+                    <tr style="border-bottom: 1px solid var(--color-border);">
+                      <td class="py-3 pr-8" style="color: var(--color-text);">{row.layer[lang]}</td>
+                      <td class="py-3" style="color: var(--color-muted);">{row.tools}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        <!-- Data note -->
+        {ld.dataNote && (
+          <p class="text-xs leading-relaxed" style="color: var(--color-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem;">
+            {ld.dataNote[lang]}
+          </p>
+        )}
+      </div>
+    ) : (
+      <p class="text-base leading-relaxed" style="color: var(--color-muted);">
+        {project.description[lang]}
+      </p>
+    )}
+
+  </article>
+</Layout>
