@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { t, type Lang } from '../i18n/translations';
+import { stripBase, withBase } from '../utils/paths';
 
 interface Props {
   lang: Lang;
@@ -12,6 +13,7 @@ interface Props {
 
 const { lang, title, description } = Astro.props;
 const tr = t(lang);
+const currentPath = stripBase(Astro.url.pathname);
 
 const pageTitle = title
   ? `${title} — YU Zhuoyan`
@@ -29,16 +31,16 @@ const pageDescription = description
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={pageDescription} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <title>{pageTitle}</title>
 
     <!-- Alternate language links -->
-    <link rel="alternate" hreflang="zh" href={Astro.url.pathname.replace(/^\/(en|fr)/, '/zh')} />
-    <link rel="alternate" hreflang="en" href={Astro.url.pathname.replace(/^\/(zh|fr)/, '/en')} />
-    <link rel="alternate" hreflang="fr" href={Astro.url.pathname.replace(/^\/(zh|en)/, '/fr')} />
+    <link rel="alternate" hreflang="zh" href={withBase(currentPath.replace(/^\/(en|fr)/, '/zh'))} />
+    <link rel="alternate" hreflang="en" href={withBase(currentPath.replace(/^\/(zh|fr)/, '/en'))} />
+    <link rel="alternate" hreflang="fr" href={withBase(currentPath.replace(/^\/(zh|en)/, '/fr'))} />
   </head>
   <body>
-    <Nav lang={lang} currentPath={Astro.url.pathname} />
+    <Nav lang={lang} currentPath={currentPath} />
     <main>
       <slot />
     </main>

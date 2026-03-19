@@ -1,5 +1,6 @@
 ---
 import { t, LANGUAGES, type Lang } from '../i18n/translations';
+import { withBase } from '../utils/paths';
 
 interface Props {
   lang: Lang;
@@ -8,22 +9,24 @@ interface Props {
 
 const { lang, currentPath } = Astro.props;
 const tr = t(lang);
+const homePath = `/${lang}`;
+const currentPagePath = withBase(currentPath);
 
 // Build path for a different language by replacing the language prefix
 function langPath(targetLang: Lang): string {
   // e.g. /zh/projects → /en/projects
-  return currentPath.replace(/^\/(zh|en|fr)/, `/${targetLang}`);
+  return withBase(currentPath.replace(/^\/(zh|en|fr)/, `/${targetLang}`));
 }
 
 // Build path for a nav item in the current language
 function navPath(page: string): string {
-  return page === 'home' ? `/${lang}` : `/${lang}/${page}`;
+  return withBase(page === 'home' ? homePath : `/${lang}/${page}`);
 }
 
 const navItems = [
-  { key: 'home',     label: tr.nav.home,     href: navPath('home') },
-  { key: 'projects', label: tr.nav.projects,  href: navPath('projects') },
-  { key: 'about',    label: tr.nav.about,     href: navPath('about') },
+  { key: 'home', label: tr.nav.home, href: navPath('home'), current: homePath },
+  { key: 'projects', label: tr.nav.projects, href: navPath('projects'), current: `/${lang}/projects` },
+  { key: 'about', label: tr.nav.about, href: navPath('about'), current: `/${lang}/about` },
 ];
 
 const langLabels: Record<Lang, string> = { zh: '中', en: 'EN', fr: 'FR' };
@@ -35,7 +38,7 @@ const enabledLanguages: Lang[] = ['en'];
     <nav class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
 
       <!-- Logo / Name -->
-      <a href={`/${lang}`}
+      <a href={withBase(homePath)}
          class="font-serif text-lg tracking-widest"
          style="color: var(--color-text); text-decoration: none;">
         Yan
@@ -50,9 +53,9 @@ const enabledLanguages: Lang[] = ['en'];
             <li>
               <a href={item.href}
                  class="text-base tracking-wider transition-colors duration-200"
-                 style={`color: ${currentPath === item.href || (item.key === 'home' && currentPath === `/${lang}`) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none;`}
+                 style={`color: ${currentPath === item.current || (item.key === 'home' && currentPagePath === item.href) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none;`}
                  onmouseover="this.style.color='var(--color-text)'"
-                 onmouseout={`this.style.color='${currentPath === item.href ? 'var(--color-accent)' : 'var(--color-muted)'}'`}>
+                 onmouseout={`this.style.color='${currentPath === item.current || (item.key === 'home' && currentPagePath === item.href) ? 'var(--color-accent)' : 'var(--color-muted)'}'`}>
                 {item.label}
               </a>
             </li>

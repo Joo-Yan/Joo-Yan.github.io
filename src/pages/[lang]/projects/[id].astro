@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { LANGUAGES, t, type Lang } from '../../../i18n/translations';
 import { projects } from '../../../i18n/content';
+import { withBase } from '../../../utils/paths';
 
 export function getStaticPaths() {
   return LANGUAGES.flatMap(lang =>
@@ -22,7 +23,7 @@ const ld = project.longDescription;
 
     <!-- Back link -->
     <div class="mb-12">
-      <a href={`/${lang}/projects`}
+      <a href={withBase(`/${lang}/projects`)}
          class="text-xs tracking-widest uppercase transition-colors duration-200"
          style="color: var(--color-muted); text-decoration: none;"
          onmouseover="this.style.color='var(--color-text)'"
