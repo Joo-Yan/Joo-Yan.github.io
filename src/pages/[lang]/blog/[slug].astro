@@ -1,0 +1,73 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { LANGUAGES, t, type Lang } from '../../../i18n/translations';
+import { getCollection, render } from 'astro:content';
+import { withBase } from '../../../utils/paths';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog').catch(() => []);
+  const enPosts = allPosts.filter(e => e.id.startsWith('en/'));
+
+  return LANGUAGES.flatMap(lang =>
+    enPosts.map(p => ({
+      params: { lang, slug: p.id.replace('en/', '') },
+    }))
+  );
+}
+
+const { lang, slug } = Astro.params as { lang: Lang; slug: string };
+const tr = t(lang);
+
+const allPosts = await getCollection('blog');
+const langEntry = allPosts.find(e => e.id === `${lang}/${slug}`);
+const enEntry = allPosts.find(e => e.id === `en/${slug}`)!;
+
+const entry = (langEntry && langEntry.body?.trim()) ? langEntry : enEntry;
+const { Content } = await render(entry);
+---
+
+<Layout lang={lang} title={entry.data.title}>
+  <article class="max-w-3xl mx-auto px-6 pt-16 pb-24">
+
+    <!-- Back link -->
+    <div class="mb-12">
+      <a href={withBase(`/${lang}/blog`)}
+         class="text-xs tracking-widest uppercase transition-colors duration-200"
+         style="color: var(--color-muted); text-decoration: none;"
+         onmouseover="this.style.color='var(--color-text)'"
+         onmouseout="this.style.color='var(--color-muted)'">
+        ← {tr.blog.title}
+      </a>
+    </div>
+
+    <!-- Header -->
+    <header class="mb-12">
+      <h1 class="font-serif text-4xl md:text-5xl font-light mb-4" style="color: var(--color-text);">
+        {entry.data.title}
+      </h1>
+
+      <p class="text-xs tracking-wider" style="color: var(--color-muted);">
+        {entry.data.date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : lang === 'fr' ? 'fr-FR' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+
+      {entry.data.tags && entry.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {entry.data.tags.map(tag => (
+            <span class="text-xs px-2 py-1 tracking-wider"
+                  style="background-color: var(--color-border); color: var(--color-muted);">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div class="mt-8" style="width: 3rem; height: 1px; background-color: var(--color-accent);"></div>
+    </header>
+
+    <!-- Markdown body -->
+    <div class="prose-project">
+      <Content />
+    </div>
+
+  </article>
+</Layout>

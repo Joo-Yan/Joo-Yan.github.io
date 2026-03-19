@@ -35,6 +35,104 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
 }
 
+/* ─── Prose: About page paragraphs ──────────────────────────────────────────── */
+.prose-about p {
+  font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.75rem;
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+  margin-bottom: 2rem;
+}
+
+/* ─── Prose: Project detail body ────────────────────────────────────────────── */
+.prose-project > *:first-child { margin-top: 0; }
+
+.prose-project p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}
+
+.prose-project > p:first-child em,
+.prose-project > p:first-child {
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--color-muted);
+}
+
+.prose-project h2 {
+  font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-text);
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: normal;
+}
+
+.prose-project ul {
+  margin: 1rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.prose-project ul li {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.prose-project ul li::before {
+  content: '—';
+  color: var(--color-accent);
+  position: absolute;
+  left: 0;
+}
+
+.prose-project table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.prose-project th {
+  text-align: left;
+  padding: 0.5rem 2rem 0.5rem 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose-project td {
+  padding: 0.75rem 2rem 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.prose-project td:first-child {
+  color: var(--color-text);
+}
+
+.prose-project hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 1.5rem 0;
+}
+
+.prose-project em {
+  font-style: italic;
+}
+
 /* ─── Fade-in animation ─────────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }

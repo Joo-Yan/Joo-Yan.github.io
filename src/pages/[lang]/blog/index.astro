@@ -1,13 +1,22 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { LANGUAGES, t, type Lang } from '../../../i18n/translations';
+import { getCollection } from 'astro:content';
+import { withBase } from '../../../utils/paths';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return LANGUAGES.map(lang => ({ params: { lang } }));
 }
 
 const { lang } = Astro.params as { lang: Lang };
 const tr = t(lang);
+
+const allPosts = await getCollection('blog').catch(() => []);
+const enPosts = allPosts
+  .filter(e => e.id.startsWith('en/'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const hasPosts = enPosts.length > 0;
 ---
 
 <Layout lang={lang} title={tr.blog.title}>
@@ -20,13 +29,42 @@ const tr = t(lang);
       <div class="mt-4" style="width: 3rem; height: 1px; background-color: var(--color-accent);"></div>
     </div>
 
-    <div class="max-w-md">
-      <p class="font-serif text-2xl font-light mb-4" style="color: var(--color-muted);">
-        {tr.blog.comingSoon}
-      </p>
-      <p class="text-sm leading-relaxed" style="color: var(--color-muted);">
-        {tr.blog.comingSoonText}
-      </p>
-    </div>
+    {hasPosts ? (
+      <div class="space-y-8">
+        {enPosts.map(post => {
+          const slug = post.id.replace('en/', '');
+          const langPost = allPosts.find(e => e.id === `${lang}/${slug}` && e.body?.trim());
+          const display = langPost ?? post;
+          return (
+            <article style="border-top: 1px solid var(--color-border); padding-top: 2rem;">
+              <a href={withBase(`/${lang}/blog/${slug}`)}
+                 class="font-serif text-2xl font-light transition-colors duration-200"
+                 style="color: var(--color-text); text-decoration: none;"
+                 onmouseover="this.style.color='var(--color-accent)'"
+                 onmouseout="this.style.color='var(--color-text)'">
+                {display.data.title}
+              </a>
+              <p class="text-xs tracking-wider mt-2" style="color: var(--color-muted);">
+                {display.data.date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : lang === 'fr' ? 'fr-FR' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              {display.data.description && (
+                <p class="text-base leading-relaxed mt-2" style="color: var(--color-muted);">
+                  {display.data.description}
+                </p>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    ) : (
+      <div class="max-w-md">
+        <p class="font-serif text-2xl font-light mb-4" style="color: var(--color-muted);">
+          {tr.blog.comingSoon}
+        </p>
+        <p class="text-sm leading-relaxed" style="color: var(--color-muted);">
+          {tr.blog.comingSoonText}
+        </p>
+      </div>
+    )}
   </section>
 </Layout>

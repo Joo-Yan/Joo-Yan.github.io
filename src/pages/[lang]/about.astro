@@ -1,15 +1,21 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { LANGUAGES, t, type Lang } from '../../i18n/translations';
-import { aboutText } from '../../i18n/content';
+import { getCollection } from 'astro:content';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return LANGUAGES.map(lang => ({ params: { lang } }));
 }
 
 const { lang } = Astro.params as { lang: Lang };
 const tr = t(lang);
-const paragraphs = aboutText[lang];
+
+const aboutEntries = await getCollection('about');
+const entry = aboutEntries.find(e => e.id === lang)
+           ?? aboutEntries.find(e => e.id === 'en');
+
+const isEmpty = !entry?.body?.trim();
+const paragraphs = isEmpty ? [] : entry!.body!.trim().split(/\n\n+/);
 ---
 
 <Layout lang={lang} title={tr.about.title}>
@@ -24,13 +30,16 @@ const paragraphs = aboutText[lang];
     </div>
 
     <!-- Cover letter text -->
-    <div class="max-w-2xl space-y-8">
-      {paragraphs.map(para => (
-        <p class="font-serif text-xl font-light leading-relaxed"
-           style="color: var(--color-text); letter-spacing: 0.01em;">
-          {para}
+    <div class="max-w-2xl prose-about">
+      {isEmpty ? (
+        <p style="font-family: ui-serif, Georgia, serif; font-size: 1.25rem; font-weight: 300; color: var(--color-muted);">
+          暂无中文版
         </p>
-      ))}
+      ) : (
+        paragraphs.map(para => (
+          <p>{para}</p>
+        ))
+      )}
     </div>
 
     <!-- Contact CTA -->
