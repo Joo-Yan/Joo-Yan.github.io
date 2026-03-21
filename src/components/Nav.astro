@@ -27,6 +27,7 @@ const navItems = [
   { key: 'home', label: tr.nav.home, href: navPath('home'), current: homePath },
   { key: 'projects', label: tr.nav.projects, href: navPath('projects'), current: `/${lang}/projects` },
   { key: 'about', label: tr.nav.about, href: navPath('about'), current: `/${lang}/about` },
+  { key: 'blog', label: tr.nav.blog, href: navPath('blog'), current: `/${lang}/blog` },
 ];
 
 const langLabels: Record<Lang, string> = { zh: '中', en: 'EN', fr: 'FR' };
@@ -35,44 +36,35 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
 
 <header class="fixed top-0 left-0 right-0 z-50" style="background-color: var(--color-bg);">
   <div style="border-bottom: 1px solid var(--color-border);">
-    <nav class="max-w-4xl mx-auto px-6 flex items-center justify-between" style="height: 56px;">
+    <nav class="max-w-4xl mx-auto flex items-center justify-between" style="height: 56px; padding-left: 24px; padding-right: 24px;">
 
       <!-- Logo / Name -->
       <a href={withBase(homePath)}
-         class="text-xl tracking-widest"
-         style="color: var(--color-text); text-decoration: none; font-family: var(--font-display); font-weight: 400; letter-spacing: 0.15em;">
+         style="color: var(--color-text); text-decoration: none; font-family: var(--font-display); font-weight: 400; font-size: 20px; line-height: 1; letter-spacing: 0.15em;">
         Yan
       </a>
 
       <!-- Desktop: Nav links + language switcher -->
-      <div class="hidden sm:flex items-center gap-8">
+      <div class="hidden sm:flex items-center" style="gap: 32px;">
 
         <!-- Page links -->
-        <ul class="flex items-center gap-6 list-none m-0 p-0">
+        <ul class="flex items-center list-none m-0 p-0" style="gap: 24px;">
           {navItems.map(item => (
             <li>
               <a href={item.href}
-                 class="text-base tracking-wider transition-colors duration-200"
-                 style={`color: ${currentPath === item.current || (item.key === 'home' && currentPagePath === item.href) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none;`}
+                 class="transition-colors duration-200"
+                 style={`color: ${currentPath === item.current || (item.key === 'home' && currentPagePath === item.href) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none; font-size: 16px; line-height: 1.2; letter-spacing: 0.08em;`}
                  onmouseover="this.style.color='var(--color-text)'"
                  onmouseout={`this.style.color='${currentPath === item.current || (item.key === 'home' && currentPagePath === item.href) ? 'var(--color-accent)' : 'var(--color-muted)'}'`}>
                 {item.label}
               </a>
             </li>
           ))}
-          <!-- Blog: disabled, coming soon -->
-          <li>
-            <span class="text-base tracking-wider cursor-default"
-                  style="color: var(--color-disabled);"
-                  title={tr.nav.blogSoon}>
-              {tr.nav.blog}
-            </span>
-          </li>
         </ul>
 
         <!-- Language switcher -->
-        <div class="flex items-center gap-2 text-xs tracking-widest"
-             style="border-left: 1px solid var(--color-border); padding-left: 1.5rem;">
+        <div class="flex items-center"
+             style="gap: 8px; border-left: 1px solid var(--color-border); padding-left: 24px; font-size: 12px; line-height: 1; letter-spacing: 0.12em;">
           {LANGUAGES.map((l, i) => (
             <>
               {i > 0 && <span style="color: var(--color-disabled);">·</span>}
@@ -110,25 +102,19 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
   <div id="mobile-menu"
        class="sm:hidden hidden"
        style="background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
-    <div class="max-w-4xl mx-auto px-6 py-4 flex flex-col gap-4">
+    <div class="max-w-4xl mx-auto flex flex-col" style="padding: 16px 24px; gap: 16px;">
 
       <!-- Mobile nav links -->
       {navItems.map(item => (
         <a href={item.href}
-           class="text-base tracking-wider"
-           style={`color: ${currentPath === item.current || (item.key === 'home' && currentPagePath === item.href) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none;`}>
+           style={`color: ${currentPath === item.current || (item.key === 'home' && currentPagePath === item.href) ? 'var(--color-accent)' : 'var(--color-muted)'}; text-decoration: none; font-size: 16px; line-height: 1.2; letter-spacing: 0.08em;`}>
           {item.label}
         </a>
       ))}
-      <span class="text-base tracking-wider cursor-default"
-            style="color: var(--color-disabled);"
-            title={tr.nav.blogSoon}>
-        {tr.nav.blog}
-      </span>
 
       <!-- Mobile language switcher -->
-      <div class="flex items-center gap-2 text-xs tracking-widest pt-2"
-           style="border-top: 1px solid var(--color-border);">
+      <div class="flex items-center"
+           style="gap: 8px; padding-top: 8px; border-top: 1px solid var(--color-border); font-size: 12px; line-height: 1; letter-spacing: 0.12em;">
         {LANGUAGES.map((l, i) => (
           <>
             {i > 0 && <span style="color: var(--color-disabled);">·</span>}

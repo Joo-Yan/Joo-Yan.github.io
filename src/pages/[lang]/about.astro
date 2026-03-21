@@ -18,7 +18,7 @@ const isEmpty = !entry?.body?.trim();
 const paragraphs = isEmpty ? [] : entry!.body!.trim().split(/\n\n+/);
 ---
 
-<Layout lang={lang} title={tr.about.title} htmlClass="page-about">
+<Layout lang={lang} title={tr.about.title}>
   <section class="max-w-4xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-16 sm:pb-24">
 
     <!-- Page heading -->
