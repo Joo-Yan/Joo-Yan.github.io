@@ -1,5 +1,6 @@
 ---
 import { t, type Lang } from '../i18n/translations';
+import { withBase } from '../utils/paths';
 
 interface Props {
   lang: Lang;
@@ -28,6 +29,16 @@ const tr = t(lang);
     </p>
     <p class="text-base tracking-wider" style="color: var(--color-muted);">
       {tr.hero.available}
+      {' '}
+      <a
+        href={withBase(`/${lang}/blog/why-me`)}
+        class="transition-colors duration-200"
+        style="color: var(--color-text); text-decoration: underline; text-underline-offset: 0.18em;"
+        onmouseover="this.style.color='var(--color-accent)'"
+        onmouseout="this.style.color='var(--color-text)'"
+      >
+        {tr.hero.whyMe}
+      </a>
     </p>
   </div>
 

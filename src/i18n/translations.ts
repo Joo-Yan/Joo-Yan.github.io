@@ -13,6 +13,7 @@ export const translations = {
     hero: {
       tagline: '工程师在读 · 技术探索者',
       available: '巴黎 · 寻找实习与交替培训（2026）',
+      whyMe: 'Why Me',
       github: 'GitHub',
       email: '邮箱',
     },
@@ -65,6 +66,7 @@ export const translations = {
     hero: {
       tagline: 'Engineering student · Tech explorer',
       available: 'Paris · Open to internships & alternance (2026)',
+      whyMe: 'Why Me',
       github: 'GitHub',
       email: 'Email',
     },
@@ -117,6 +119,7 @@ export const translations = {
     hero: {
       tagline: 'Étudiante ingénieure · Exploratrice tech',
       available: 'Paris · Recherche stage / alternance (2026)',
+      whyMe: 'Why Me',
       github: 'GitHub',
       email: 'E-mail',
     },
