@@ -7,7 +7,7 @@ export const translations = {
       home: '首页',
       projects: '作品集',
       about: '关于',
-      blog: '博客',
+      blog: 'Fragments',
       blogSoon: '即将推出',
     },
     hero: {
@@ -45,7 +45,7 @@ export const translations = {
       title: '关于我',
     },
     blog: {
-      title: '博客',
+      title: 'Fragments',
       comingSoon: '即将推出',
       comingSoonText: '正在整理写作中的内容，敬请期待。',
     },
@@ -60,7 +60,7 @@ export const translations = {
       home: 'Home',
       projects: 'Projects',
       about: 'About',
-      blog: 'Blog',
+      blog: 'Fragments',
       blogSoon: 'Coming soon',
     },
     hero: {
@@ -98,7 +98,7 @@ export const translations = {
       title: 'About',
     },
     blog: {
-      title: 'Blog',
+      title: 'Fragments',
       comingSoon: 'Coming soon',
       comingSoonText: 'Writing in progress. Check back later.',
     },
@@ -113,7 +113,7 @@ export const translations = {
       home: 'Accueil',
       projects: 'Projets',
       about: 'À propos',
-      blog: 'Blog',
+      blog: 'Fragments',
       blogSoon: 'Bientôt',
     },
     hero: {
@@ -151,7 +151,7 @@ export const translations = {
       title: 'À propos',
     },
     blog: {
-      title: 'Blog',
+      title: 'Fragments',
       comingSoon: 'Bientôt disponible',
       comingSoonText: 'Des articles sont en préparation. Revenez bientôt.',
     },
