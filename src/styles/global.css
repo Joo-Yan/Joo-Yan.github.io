@@ -156,12 +156,6 @@ h1, h2, h3 {
   margin: 0 0 1.25rem;
 }
 
-.prose-blog > p:first-child,
-.prose-blog > p:first-child em {
-  font-size: 1.2rem;
-  color: var(--color-muted);
-}
-
 .prose-blog h2,
 .prose-blog h3 {
   color: var(--color-text);
@@ -237,8 +231,6 @@ html.text-large .prose-project table                      { font-size: 1rem; }
 html.text-large .prose-project th                         { font-size: 0.875rem; }
 html.text-large .prose-blog p,
 html.text-large .prose-blog li                            { font-size: 1.3rem; }
-html.text-large .prose-blog > p:first-child,
-html.text-large .prose-blog > p:first-child em            { font-size: 1.45rem; }
 html.text-large .prose-blog h2                            { font-size: 2.3rem; }
 html.text-large .prose-blog h3                            { font-size: 1.8rem; }
 
