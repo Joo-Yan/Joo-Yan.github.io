@@ -23,37 +23,37 @@ const homeProjects = enProjects.map(enEntry => {
 });
 ---
 
-<section class="max-w-4xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24"
-         style="border-top: 1px solid var(--color-border);">
+<section class="max-w-4xl mx-auto px-6 pb-20 sm:pb-32 border-t border-[var(--color-border)]">
 
   <!-- ── Education ─────────────────────────────────────────────────── -->
-  <div class="pt-14 pb-12">
-    <h2 class="text-sm tracking-widest uppercase mb-8"
-        style="color: var(--color-accent);">
+  <div class="pt-16 pb-16">
+    <h2 class="text-xs tracking-[0.2em] uppercase mb-12 text-[var(--color-accent)] font-sans font-medium">
       {tr.resume.education}
     </h2>
 
-    <div class="space-y-8">
+    <div class="space-y-12">
       {education.map(edu => (
-        <div class="grid md:grid-cols-3 gap-2 md:gap-6">
+        <div class="grid md:grid-cols-4 gap-4 md:gap-8">
           <!-- School + degree -->
-          <div class="md:col-span-2">
-            <p class="text-xl font-medium" style="color: var(--color-text);">
+          <div class="md:col-span-3">
+            <p class="text-[clamp(1.25rem,4vw,1.5rem)] font-display font-medium text-[var(--color-text)] leading-tight">
               {edu.school}
             </p>
-            <p class="text-base mt-1" style="color: var(--color-muted);">
-              {edu.degree[lang]}
-            </p>
-            {edu.note && (
-              <p class="text-sm mt-1 italic" style="color: var(--color-muted);">
-                {edu.note[lang]}
+            <div class="mt-2 flex flex-col gap-1">
+              <p class="text-base text-[var(--color-muted)] font-serif italic">
+                {edu.degree[lang]}
               </p>
-            )}
+              {edu.note && (
+                <p class="text-sm text-[var(--color-muted)] font-sans tracking-wide">
+                  {edu.note[lang]}
+                </p>
+              )}
+            </div>
           </div>
           <!-- Period + location -->
-          <div class="text-sm text-right" style="color: var(--color-muted);">
-            <p>{edu.period}</p>
-            <p class="text-xs mt-1">{edu.location}</p>
+          <div class="text-right flex flex-col justify-start md:items-end">
+            <p class="text-sm font-sans tracking-wider text-[var(--color-text)]">{edu.period}</p>
+            <p class="text-xs mt-1 text-[var(--color-muted)] uppercase tracking-widest">{edu.location}</p>
           </div>
         </div>
       ))}
@@ -61,23 +61,20 @@ const homeProjects = enProjects.map(enEntry => {
   </div>
 
   <!-- ── Skills ────────────────────────────────────────────────────── -->
-  <div class="py-12" style="border-top: 1px solid var(--color-border);">
-    <h2 class="text-sm tracking-widest uppercase mb-8"
-        style="color: var(--color-accent);">
+  <div class="py-16 border-t border-[var(--color-border)]">
+    <h2 class="text-xs tracking-[0.2em] uppercase mb-12 text-[var(--color-accent)] font-sans font-medium">
       {tr.resume.skills}
     </h2>
 
-    <div class="space-y-4">
+    <div class="space-y-8">
       {Object.entries(skills).map(([category, items]) => (
-        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6">
-          <span class="text-sm tracking-widest uppercase w-32 shrink-0"
-                style="color: var(--color-muted);">
+        <div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8">
+          <span class="text-xs tracking-[0.15em] uppercase w-32 shrink-0 text-[var(--color-muted)] font-sans">
             {tr.resume.skillCategories[category as keyof typeof tr.resume.skillCategories]}
           </span>
           <div class="flex flex-wrap gap-2">
             {items.map(skill => (
-              <span class="text-sm px-3 py-1 border"
-                    style="border-color: var(--color-border); color: var(--color-text);">
+              <span class="text-[0.8125rem] px-3 py-1 border border-[var(--color-border)] text-[var(--color-text)] font-sans">
                 {skill}
               </span>
             ))}
@@ -88,46 +85,40 @@ const homeProjects = enProjects.map(enEntry => {
   </div>
 
   <!-- ── Projects (summary list) ───────────────────────────────────── -->
-  <div class="py-12" style="border-top: 1px solid var(--color-border);">
-    <h2 class="text-sm tracking-widest uppercase mb-8"
-        style="color: var(--color-accent);">
+  <div class="py-16 border-t border-[var(--color-border)]">
+    <h2 class="text-xs tracking-[0.2em] uppercase mb-12 text-[var(--color-accent)] font-sans font-medium">
       {tr.resume.projects}
     </h2>
 
-    <div class="space-y-6">
+    <div class="space-y-10">
       {homeProjects.map(project => (
-        <div class="flex flex-col md:flex-row md:items-start gap-1 md:gap-6">
+        <div class="group flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
           <div class="md:w-64 shrink-0">
             <div class="flex items-center gap-3">
               <a href={withBase(`/${lang}/projects/${project.data.id}`)}
-                 class="text-lg font-medium transition-colors duration-200"
-                 style="color: var(--color-text); text-decoration: none;"
-                 onmouseover="this.style.color='var(--color-accent)'"
-                 onmouseout="this.style.color='var(--color-text)'">
+                 class="text-[1.375rem] font-display font-medium text-[var(--color-text)] no-underline transition-colors duration-300 hover:text-[var(--color-accent)]">
                 {project.data.title}
               </a>
               {project.data.wip && (
-                <span class="text-xs px-2 py-0.5 tracking-wider"
-                      style="border: 1px solid var(--color-accent); color: var(--color-accent);">
+                <span class="text-[10px] px-1.5 py-0.5 tracking-widest uppercase border border-[var(--color-accent)] text-[var(--color-accent)]">
                   {tr.projects.wip}
                 </span>
               )}
             </div>
             {project.data.period && (
-              <p class="text-xs tracking-wider uppercase mt-1" style="color: var(--color-muted);">
+              <p class="text-[10px] tracking-[0.15em] uppercase mt-2 text-[var(--color-muted)]">
                 {project.data.period}
               </p>
             )}
-            <div class="flex flex-wrap gap-1 mt-2">
+            <div class="flex flex-wrap gap-1.5 mt-3">
               {project.data.tags.map(tag => (
-                <span class="text-xs px-1.5 py-0.5 tracking-wider"
-                      style="background-color: var(--color-border); color: var(--color-muted);">
+                <span class="text-[10px] px-1.5 py-0.5 tracking-[0.1em] uppercase bg-[var(--color-border)] text-[var(--color-muted)]">
                   {tag}
                 </span>
               ))}
             </div>
           </div>
-          <p class="text-base leading-relaxed flex-1" style="color: var(--color-text);">
+          <p class="text-[1.0625rem] leading-relaxed flex-1 text-[var(--color-text)] font-serif italic md:mt-1">
             {project.data.homeDescription ?? project.data.description}
           </p>
         </div>
@@ -135,15 +126,16 @@ const homeProjects = enProjects.map(enEntry => {
     </div>
 
     <!-- Link to full projects page -->
-    <div class="mt-10">
+    <div class="mt-16">
       <a href={withBase(`/${lang}/projects`)}
-         class="text-sm tracking-wider transition-colors duration-200"
-         style="color: var(--color-accent); text-decoration: none;"
-         onmouseover="this.style.color='var(--color-text)'"
-         onmouseout="this.style.color='var(--color-accent)'">
+         class="group inline-flex items-center gap-2 text-sm tracking-[0.15em] uppercase no-underline text-[var(--color-accent)] font-medium transition-colors duration-200 hover:text-[var(--color-text)]">
         {tr.resume.viewAll}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-300 group-hover:translate-x-1">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
       </a>
     </div>
   </div>
 
 </section>
+

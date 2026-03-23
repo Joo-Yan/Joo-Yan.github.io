@@ -218,47 +218,38 @@ h1, h2, h3 {
 
 /* ─── Accessibility overrides ───────────────────────────────────────────────── */
 
-/* A⁺ toggle: scale only text, not layout or spacing */
+/* A⁺ toggle: scale root font size to affect all rem units */
+html.text-large {
+  font-size: 130%; /* Scale up from 112.5% */
+}
 
-/* Prose classes (about page, project detail) */
+/* Ensure clamp() values also scale or have large-text fallbacks if needed.
+   Since our rem units now scale with the root, we only need to override
+   specific elements that might need extra breathing room or have specific issues. */
+
 html.text-large .prose-about p                            { font-size: 1.4rem; }
-html.text-large .prose-project p                          { font-size: 1.3rem; }
-html.text-large .prose-project > p:first-child,
-html.text-large .prose-project > p:first-child em         { font-size: 1.45rem; }
-html.text-large .prose-project h2                         { font-size: 2rem; }
-html.text-large .prose-project ul li                      { font-size: 1.3rem; }
-html.text-large .prose-project table                      { font-size: 1rem; }
-html.text-large .prose-project th                         { font-size: 0.875rem; }
-html.text-large .prose-blog p,
-html.text-large .prose-blog li                            { font-size: 1.3rem; }
-html.text-large .prose-blog h2                            { font-size: 2.3rem; }
-html.text-large .prose-blog h3                            { font-size: 1.8rem; }
+html.text-large .prose-project h2                         { font-size: 2.25rem; }
+html.text-large .prose-blog h2                            { font-size: 2.5rem; }
+html.text-large .prose-blog h3                            { font-size: 2rem; }
 
-/* Base Tailwind text utilities — scoped to <main>, nav/footer unaffected.
-   Note: responsive variants (sm:text-*, md:text-*) use colons in their class
-   names, so they need separate @media-scoped rules below. */
-html.text-large main .text-xs   { font-size: 0.875rem; }
-html.text-large main .text-sm   { font-size: 1rem;     }
-html.text-large main .text-base { font-size: 1.125rem; }
-html.text-large main .text-lg   { font-size: 1.25rem;  }
-html.text-large main .text-xl   { font-size: 1.5rem;   }
-html.text-large main .text-2xl  { font-size: 1.875rem; }
-html.text-large main .text-3xl  { font-size: 2.25rem;  }
-html.text-large main .text-4xl  { font-size: 2.75rem;  }
-html.text-large main .text-5xl  { font-size: 3.5rem;   }
+/* Home page specific overrides for clamp values that might feel too small even when scaled */
+html.text-large main h1 { font-size: clamp(3rem, 12vw, 6.5rem); }
+html.text-large .prose-about p, 
+html.text-large main p.font-serif { font-size: clamp(1.3rem, 5vw, 1.6rem); }
 
-/* Responsive variant overrides — must be in matching @media blocks so they
-   take precedence over the base-class overrides above at the right breakpoints. */
-@media (min-width: 640px) {
-  html.text-large main .sm\:text-2xl { font-size: 1.875rem; }
-  html.text-large main .sm\:text-5xl { font-size: 3.5rem;   }
-  html.text-large main .sm\:text-6xl { font-size: 4.25rem;  }
-}
-@media (min-width: 768px) {
-  html.text-large main .md\:text-xl  { font-size: 1.5rem;  }
-  html.text-large main .md\:text-5xl { font-size: 3.5rem;  }
-  html.text-large main .md\:text-7xl { font-size: 5rem;    }
-}
+/* Ensure standard Tailwind classes scale predictably */
+html.text-large main .text-xs   { font-size: 0.9rem; }
+html.text-large main .text-sm   { font-size: 1.05rem; }
+html.text-large main .text-base { font-size: 1.2rem; }
+html.text-large main .text-lg   { font-size: 1.35rem; }
+html.text-large main .text-xl   { font-size: 1.6rem; }
+html.text-large main .text-2xl  { font-size: 2rem; }
+
+/* Special handling for the absolute-sized utility classes used in Resume.astro */
+html.text-large main .text-\[0\.8125rem\] { font-size: 1rem; }
+html.text-large main .text-\[1\.375rem\]  { font-size: 1.6rem; }
+html.text-large main .text-\[1\.0625rem\] { font-size: 1.25rem; }
+html.text-large main .text-\[10px\]       { font-size: 12px; }
 
 html.font-readable {
   --font-display: system-ui, -apple-system, Arial, sans-serif;
