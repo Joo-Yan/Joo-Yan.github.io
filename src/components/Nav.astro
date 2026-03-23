@@ -86,13 +86,13 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
 
       <!-- Mobile: hamburger button -->
       <button id="mobile-menu-btn"
-              class="sm:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 bg-transparent border-none cursor-pointer p-0 z-50 group"
+              class="sm:hidden flex flex-col justify-center items-center gap-[5px] w-8 h-8 bg-transparent border-none cursor-pointer p-0 z-50 group"
               aria-expanded="false"
               aria-controls="mobile-menu"
               aria-label="Toggle menu">
-        <span class="menu-bar block w-5 h-px bg-[var(--color-text)] transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-[7px]"></span>
-        <span class="menu-bar block w-5 h-px bg-[var(--color-text)] transition-all duration-300 group-aria-expanded:opacity-0"></span>
-        <span class="menu-bar block w-5 h-px bg-[var(--color-text)] transition-all duration-300 group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-[7px]"></span>
+        <span class="menu-bar block w-5 h-[1.5px] bg-[var(--color-text)] transition-all duration-300 ease-out origin-center group-aria-expanded:rotate-45 group-aria-expanded:translate-y-[6.5px]"></span>
+        <span class="menu-bar block w-5 h-[1.5px] bg-[var(--color-text)] transition-all duration-300 ease-out group-aria-expanded:opacity-0 group-aria-expanded:translate-x-2"></span>
+        <span class="menu-bar block w-5 h-[1.5px] bg-[var(--color-text)] transition-all duration-300 ease-out origin-center group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-[6.5px]"></span>
       </button>
 
     </nav>
@@ -100,38 +100,40 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
 
   <!-- Mobile menu dropdown -->
   <div id="mobile-menu"
-       class="sm:hidden hidden bg-[var(--color-bg)] border-b border-[var(--color-border)] overflow-hidden transition-all duration-300 ease-in-out"
+       class="sm:hidden grid grid-rows-[0fr] bg-[var(--color-bg)] border-b border-[var(--color-border)] overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out"
        role="navigation">
-    <div class="max-w-4xl mx-auto flex flex-col p-6 gap-4">
+    <div class="min-h-0 opacity-0 transition-opacity duration-300">
+      <div class="max-w-4xl mx-auto flex flex-col p-6 pt-2 gap-4">
 
-      <!-- Mobile nav links -->
-      {navItems.map(item => {
-        const isActive = currentPath === item.current || (item.key === 'home' && currentPagePath === item.href);
-        return (
-          <a href={item.href}
-             class={`text-base leading-tight tracking-[0.08em] no-underline transition-colors duration-200
-                     ${isActive ? 'text-[var(--color-accent)]' : 'text-[var(--color-muted)]'}`}>
-            {item.label}
-          </a>
-        );
-      })}
+        <!-- Mobile nav links -->
+        {navItems.map(item => {
+          const isActive = currentPath === item.current || (item.key === 'home' && currentPagePath === item.href);
+          return (
+            <a href={item.href}
+               class={`text-base leading-tight tracking-[0.08em] no-underline transition-colors duration-200 py-1
+                       ${isActive ? 'text-[var(--color-accent)]' : 'text-[var(--color-muted)]'}`}>
+              {item.label}
+            </a>
+          );
+        })}
 
-      <!-- Mobile language switcher -->
-      <div class="flex items-center gap-2 pt-4 border-t border-[var(--color-border)] text-xs leading-none tracking-[0.12em]">
-        {LANGUAGES.map((l, i) => (
-          <>
-            {i > 0 && <span class="text-[var(--color-disabled)]">·</span>}
-            {!enabledLanguages.includes(l)
-              ? <span class="text-[var(--color-disabled)] cursor-not-allowed">{langLabels[l]}</span>
-              : l === lang
-              ? <span class="text-[var(--color-accent)] font-medium">{langLabels[l]}</span>
-              : <a href={langPath(l)}
-                   class="text-[var(--color-muted)] no-underline">
-                   {langLabels[l]}
-                 </a>
-            }
-          </>
-        ))}
+        <!-- Mobile language switcher -->
+        <div class="flex items-center gap-2 pt-4 mt-2 border-t border-[var(--color-border)] text-xs leading-none tracking-[0.12em]">
+          {LANGUAGES.map((l, i) => (
+            <>
+              {i > 0 && <span class="text-[var(--color-disabled)]">·</span>}
+              {!enabledLanguages.includes(l)
+                ? <span class="text-[var(--color-disabled)] cursor-not-allowed">{langLabels[l]}</span>
+                : l === lang
+                ? <span class="text-[var(--color-accent)] font-medium">{langLabels[l]}</span>
+                : <a href={langPath(l)}
+                     class="text-[var(--color-muted)] no-underline">
+                     {langLabels[l]}
+                   </a>
+              }
+            </>
+          ))}
+        </div>
       </div>
     </div>
   </div>
@@ -143,18 +145,32 @@ const enabledLanguages: Lang[] = ['en', 'fr'];
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+  const menuInner = menu?.querySelector('div');
 
   btn?.addEventListener('click', () => {
     const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!isExpanded));
-    menu?.classList.toggle('hidden');
+    const nextState = !isExpanded;
+    
+    btn.setAttribute('aria-expanded', String(nextState));
+    
+    if (nextState) {
+      menu?.classList.remove('grid-rows-[0fr]');
+      menu?.classList.add('grid-rows-[1fr]');
+      if (menuInner) menuInner.style.opacity = '1';
+    } else {
+      menu?.classList.remove('grid-rows-[1fr]');
+      menu?.classList.add('grid-rows-[0fr]');
+      if (menuInner) menuInner.style.opacity = '0';
+    }
   });
 
   // Close menu on resize if window becomes larger than sm breakpoint
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 640 && !menu?.classList.contains('hidden')) {
-      menu?.classList.add('hidden');
-      btn?.setAttribute('aria-expanded', 'false');
+    if (window.innerWidth >= 640 && btn?.getAttribute('aria-expanded') === 'true') {
+      btn.setAttribute('aria-expanded', 'false');
+      menu?.classList.remove('grid-rows-[1fr]');
+      menu?.classList.add('grid-rows-[0fr]');
+      if (menuInner) menuInner.style.opacity = '0';
     }
   });
 </script>
