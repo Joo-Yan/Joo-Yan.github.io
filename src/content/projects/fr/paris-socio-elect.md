@@ -7,9 +7,9 @@ tags: [Python, GeoPandas, MapLibre GL JS, D3.js, GitHub Actions]
 demo: https://joo-yan.github.io/ParisSocioElect-ElectionsMunicipales2026
 repo: https://github.com/Joo-Yan/ParisSocioElect-ElectionsMunicipales2026
 wip: false
-period: "2026"
+period: "Mars 2026"
 featuredOnHome: true
-order: 1
+order: 2
 ---
 
 *Cartographier ceux qui ne votent pas — et se demander pourquoi*

@@ -4,7 +4,7 @@ title: AI English Speaking Assessment
 description: "Built the backend in Next.js: API routes for recording submissions, third-party speech assessment API pipeline, Supabase schema design, and deployment docs."
 tags: [Next.js, TypeScript, Supabase, Vercel]
 wip: false
-period: "2024"
+period: "Jan 2025 – Apr 2025"
 featuredOnHome: true
 order: 3
 ---

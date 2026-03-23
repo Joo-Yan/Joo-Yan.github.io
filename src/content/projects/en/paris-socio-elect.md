@@ -6,10 +6,10 @@ tags: [Python, GeoPandas, MapLibre GL JS, D3.js, GitHub Actions]
 demo: https://joo-yan.github.io/ParisSocioElect-ElectionsMunicipales2026
 repo: https://github.com/Joo-Yan/ParisSocioElect-ElectionsMunicipales2026
 wip: false
-period: "2026"
+period: "Mar 2026"
 featuredOnHome: true
 homeDescription: "Built an end-to-end spatial analysis pipeline using Python and GeoPandas to join 2026 Paris municipal election results across 903 voting precincts with INSEE housing and income data, then built an interactive MapLibre GL JS + D3.js dashboard — revealing a consistent positive correlation between social housing density and voter abstention citywide."
-order: 1
+order: 2
 ---
 
 *Mapping Who Doesn't Vote — and Asking Why*

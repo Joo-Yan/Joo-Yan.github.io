@@ -5,7 +5,7 @@ title: Système d'évaluation orale IA
 description: "Développé le backend Next.js : routes API pour les soumissions audio, pipeline d'évaluation vocale, schéma Supabase et documentation de déploiement."
 tags: [Next.js, TypeScript, Supabase, Vercel]
 wip: false
-period: "2024"
+period: "Jan 2025 – Avr 2025"
 featuredOnHome: true
 order: 3
 ---
