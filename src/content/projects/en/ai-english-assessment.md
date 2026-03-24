@@ -1,6 +1,6 @@
 ---
 id: speaking-assessment
-title: AI English Speaking Assessment
+title: AI English Speaking Assessment Prototype for An Start-up
 description: "Built the backend in Next.js: API routes for recording submissions, third-party speech assessment API pipeline, Supabase schema design, and deployment docs."
 tags: [Next.js, TypeScript, Supabase, Vercel]
 wip: false
