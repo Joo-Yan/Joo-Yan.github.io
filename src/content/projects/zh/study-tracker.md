@@ -4,6 +4,8 @@ id: study-tracker
 title: StudyTracker
 description: "一个使用 Claude Code 构建的全栈个人成长平台，将习惯追踪、OKR 管理、项目规划、内容库与数据分析整合到同一个应用中。"
 tags: [Next.js 15, TypeScript, PostgreSQL, Prisma, Supabase, Claude Code]
+demo: https://learning-and-projects-tracker.vercel.app/
+repo: https://github.com/Joo-Yan/StudyTracker
 wip: false
 period: "2026年3月"
 featuredOnHome: true

@@ -3,6 +3,8 @@ id: study-tracker
 title: StudyTracker
 description: "A full-stack personal growth platform built with Claude Code, integrating habit tracking, OKR management, project planning, a content library, and analytics in one app."
 tags: [Next.js 15, TypeScript, PostgreSQL, Prisma, Supabase, Claude Code]
+demo: https://learning-and-projects-tracker.vercel.app/
+repo: https://github.com/Joo-Yan/StudyTracker
 wip: false
 period: "Mar 2026"
 featuredOnHome: true
