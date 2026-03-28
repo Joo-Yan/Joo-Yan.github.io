@@ -65,7 +65,7 @@ export const translations = {
     },
     hero: {
       tagline: 'Engineering student · Tech explorer',
-      available: 'Paris · Open to internships & alternance (2026)',
+      available: 'Paris · Open to internships',
       whyMe: 'Why Me',
       github: 'GitHub',
       email: 'Email',
@@ -73,8 +73,8 @@ export const translations = {
     brief: {
       paragraphs: [
         'I\'m in informatics/computing wishing it would benefit people — as infrastructure, as a creative medium, as a tool of resistance.',
-        'Career direction still open: software engineering, networks, or data. We\'ll see.',
-        'For now: I build things, break things, stay curious, and do what I can.',
+        'Career direction still open — we\'ll see.',
+        'For now, I build things, break things, stay curious, and do what I can.',
       ],
     },
     resume: {
@@ -118,7 +118,7 @@ export const translations = {
     },
     hero: {
       tagline: 'Étudiante ingénieure · Exploratrice tech',
-      available: 'Paris · Recherche stage / alternance (2026)',
+      available: 'Paris · Recherche stage',
       whyMe: 'Why Me',
       github: 'GitHub',
       email: 'E-mail',
