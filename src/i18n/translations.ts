@@ -1,7 +1,56 @@
 export const LANGUAGES = ['zh', 'en', 'fr'] as const;
 export type Lang = typeof LANGUAGES[number];
 
-export const translations = {
+export type Translation = {
+  nav: {
+    home: string;
+    projects: string;
+    about: string;
+    blog: string;
+    blogSoon: string;
+  };
+  hero: {
+    tagline: string;
+    available: string;
+    whyMe: string;
+    github: string;
+    email: string;
+  };
+  brief: {
+    paragraphs: string[];
+  };
+  resume: {
+    education: string;
+    skills: string;
+    projects: string;
+    viewAll: string;
+    skillCategories: {
+      languages: string;
+      frameworks: string;
+      tools: string;
+    };
+  };
+  projects: {
+    title: string;
+    wip: string;
+    demo: string;
+    code: string;
+  };
+  about: {
+    title: string;
+  };
+  blog: {
+    title: string;
+    comingSoon: string;
+    comingSoonText: string;
+  };
+  footer: {
+    built: string;
+    translationNote: string;
+  };
+};
+
+export const translations: Record<Lang, Translation> = {
   zh: {
     nav: {
       home: '首页',
@@ -64,8 +113,8 @@ export const translations = {
       blogSoon: 'Coming soon',
     },
     hero: {
-      tagline: 'Engineering student · Tech explorer',
-      available: 'Paris · Open to internships',
+      tagline: 'Engineering student',
+      available: 'Paris · Open to internships (Jul - Aug) and alternance (Sept 2026, 1 year)',
       whyMe: 'Why Me',
       github: 'GitHub',
       email: 'Email',
@@ -73,8 +122,8 @@ export const translations = {
     brief: {
       paragraphs: [
         'I\'m in informatics/computing wishing it would benefit people — as infrastructure, as a creative medium, as a tool of resistance.',
-        'Career direction still open — we\'ll see.',
-        'For now, I build things, break things, stay curious, and do what I can.',
+        'Career direction still open.',
+        'For now, I explore things, stay curious, and do what I can.',
       ],
     },
     resume: {
@@ -117,8 +166,8 @@ export const translations = {
       blogSoon: 'Bientôt',
     },
     hero: {
-      tagline: 'Étudiante ingénieure · Exploratrice tech',
-      available: 'Paris · Recherche stage',
+      tagline: 'Étudiante ingénieure',
+      available: 'Paris · Recherche stage (Jul - Aug) et alternance (Sept 2026, 1 an)',
       whyMe: 'Why Me',
       github: 'GitHub',
       email: 'E-mail',
@@ -126,8 +175,8 @@ export const translations = {
     brief: {
       paragraphs: [
         'J\'étudie l\'informatique en espérant qu\'elle profite aux gens — infrastructure, prolongement de l\'expression, outil de résistance.',
-        'Orientation encore ouverte : développement logiciel, réseaux, données. On verra.',
-        'Pour l\'instant : je construis, je casse, je reste curieuse, et je fais ce que je peux.',
+        'Orientation encore ouverte.',
+        'Pour l\'instant, je construis, je casse, je reste curieuse, et je fais ce que je peux.',
       ],
     },
     resume: {
