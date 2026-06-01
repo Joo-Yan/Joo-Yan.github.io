@@ -1,7 +1,7 @@
 ---
 id: follow-gass
-title: follow-gass
-description: "Un pipeline automatisé de veille médiatique et de digest quotidien, distribué sous forme de skill Claude Code, conçu pour une communauté de fans chinois qui suivent Gabriel Attal et Stéphane Séjourné."
+title: follow-gass skill
+description: "Un pipeline automatisé de veille médiatique et de digest quotidien, distribué sous forme de skill Claude Code, conçu pour une communauté de fans chinois."
 tags: [GitHub Actions, Node.js, Claude Code, Resend, RSS, LLM]
 repo: https://github.com/BubblePub/follow-gass
 wip: false
