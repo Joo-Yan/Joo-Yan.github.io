@@ -6,7 +6,7 @@ tags: [GitHub Actions, Node.js, Claude Code, Resend, RSS, LLM]
 repo: https://github.com/BubblePub/follow-gass
 wip: false
 period: "May 2026"
-featuredOnHome: true
+selected: false
 order: 4
 ---
 
@@ -30,3 +30,6 @@ The pipeline is topic-agnostic and can be adapted to track any public figure or 
 - **Co-occurrence hard rule** — any article naming both tracked figures is always surfaced at the top, regardless of other ranking signals.
 - **Decoupled production / consumption** — the GitHub Actions pipeline and the Claude Code skill are fully independent; consumers get digests with zero API keys and zero upstream configuration.
 - **Token-diet URL encoding** — feed URLs are stored as short placeholders to reduce LLM context cost, then expanded at delivery time.
+
+## By the way
+I used a different GitHub account to maintain some distance between it and my professional identity. If you cannot understand that, then it is simply a matter of cultural difference.

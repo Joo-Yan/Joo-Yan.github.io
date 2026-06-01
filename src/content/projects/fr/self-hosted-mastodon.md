@@ -6,7 +6,6 @@ description: "Mis en place et maintenu un serveur Mastodon personnel — reverse
 tags: [Linux, Nginx, PostgreSQL]
 wip: false
 period: "Juin 2023 – Présent"
-featuredOnHome: true
 order: 1
 ---
 

@@ -8,7 +8,6 @@ demo: https://learning-and-projects-tracker.vercel.app/
 repo: https://github.com/Joo-Yan/StudyTracker
 wip: false
 period: "2026年3月"
-featuredOnHome: true
 homeDescription: "使用 Claude Code 构建了一个包含 9 个集成模块的全栈 Web 应用，底层是 12 个模型组成的 PostgreSQL 关系型数据结构；基于 Supabase 实现服务端 OAuth 与按路由隔离的用户数据作用域；并交付了一个纯客户端、双语的交互式学习中心，内含代码查看器、图表、API Explorer 和内联测验。"
 order: 0
 ---

@@ -5,7 +5,7 @@ description: "Construction and analysis of large-scale GitHub collaboration netw
 tags: [Python, igraph, Louvain Algorithm, Network Analysis, Big Data]
 wip: false
 period: "Feb 2026 – May 2026"
-featuredOnHome: false
+selected: false
 order: 5
 ---
 

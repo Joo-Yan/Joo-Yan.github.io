@@ -3,7 +3,7 @@ import { t, type Lang } from '../i18n/translations';
 import { education, skills } from '../i18n/content';
 import { getCollection } from 'astro:content';
 import { withBase } from '../utils/paths';
-import { parsePeriod } from '../utils/projects';
+import { getProjectGroups } from '../utils/projects';
 
 interface Props {
   lang: Lang;
@@ -13,18 +13,7 @@ const { lang } = Astro.props;
 const tr = t(lang);
 
 const allProjects = await getCollection('projects');
-const enProjects = allProjects
-  .filter(e => e.id.startsWith('en/') && e.data.featuredOnHome)
-  .sort((a, b) => parsePeriod(b.data.period) - parsePeriod(a.data.period));
-
-function toLangEntry(enEntry: typeof enProjects[number]) {
-  const projectId = enEntry.id.replace('en/', '');
-  const langEntry = allProjects.find(e => e.id === `${lang}/${projectId}` && e.body?.trim());
-  return langEntry ?? enEntry;
-}
-
-const selectedProjects = enProjects.filter(e => e.data.pinnedToTop).map(toLangEntry);
-const otherProjects = enProjects.filter(e => !e.data.pinnedToTop).map(toLangEntry);
+const { selected: selectedProjects, other: otherProjects } = getProjectGroups(allProjects, lang);
 ---
 
 <section class="max-w-4xl mx-auto px-6 pb-20 sm:pb-32 border-t border-[var(--color-border)]">

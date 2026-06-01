@@ -1,7 +1,9 @@
 ---
 ---
 
-I'm Zhuoyan. If you're wondering about the 'joo-yan' in the link, it's because 'Zhuo' actually sounds closer to 'Joo', but honestly, feel free to call me whatever you're comfortable with. I'm a second-year engineering student at Télécom SudParis; before coming here, I completed my bachelor's degree in Computer Science and Engineering at The Chinese University of Hong Kong, Shenzhen.
+I'm Zhuoyan. If you're wondering about the 'joo-yan' in the link, it's because 'Zhuo' actually sounds closer to 'Joo', but honestly, feel free to call me whatever you're comfortable with. 
+
+I'm a second-year engineering student at Télécom SudParis; before coming here, I completed my bachelor's degree in Computer Science and Engineering at The Chinese University of Hong Kong, Shenzhen.
 
 For my third year, my major will be AI Models and Applications, which will be done as an apprenticeship. I am interested in learning theories, but I prefer to know more about engineering practice. Personally, I like to think about optimization and trade-offs, even though sometimes people may choose not to follow the most optimized way. I am still not sure about the specific domain I am going to work in, since I am curious about different directions, and sometimes it is destiny that decides.
 

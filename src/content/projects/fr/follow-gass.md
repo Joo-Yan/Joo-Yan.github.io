@@ -6,7 +6,6 @@ tags: [GitHub Actions, Node.js, Claude Code, Resend, RSS, LLM]
 repo: https://github.com/BubblePub/follow-gass
 wip: false
 period: "Mai 2026"
-featuredOnHome: false
 order: 4
 ---
 
@@ -30,3 +29,6 @@ Le pipeline est générique et peut être adapté pour suivre n'importe quel suj
 - **Règle de co-occurrence stricte** — tout article mentionnant simultanément les deux personnalités est toujours placé en tête du digest, indépendamment des autres signaux de classement.
 - **Découplage production / consommation** — le pipeline GitHub Actions et le skill Claude Code sont entièrement indépendants ; les utilisateurs obtiennent leur digest sans clé API ni configuration en amont.
 - **Encodage URL allégé** — les URLs du feed sont stockées sous forme de courts identifiants pour réduire le coût de contexte LLM, puis restituées à la livraison.
+
+## D'ailleurs
+J'ai utilisé un autre compte GitHub pour garder mes distances avec mon identité professionnelle. Si vous ne le comprenez pas, c'est juste une différence culturelle.

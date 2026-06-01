@@ -5,8 +5,7 @@ description: "Set up and maintained a personal Mastodon server — Nginx reverse
 tags: [Linux, Nginx, PostgreSQL]
 wip: false
 period: "Jun 2023 – Present"
-featuredOnHome: true
-pinnedToTop: true
+selected: true
 order: 1
 ---
 

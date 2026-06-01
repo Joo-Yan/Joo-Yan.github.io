@@ -6,7 +6,6 @@ description: "Prototype full stack développé en binôme : routes API pour les 
 tags: [Next.js, TypeScript, Supabase, Vercel]
 wip: false
 period: "Jan 2025 – Avr 2025"
-featuredOnHome: true
 order: 3
 ---
 

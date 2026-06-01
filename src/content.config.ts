@@ -12,8 +12,10 @@ const projects = defineCollection({
     repo: z.string().optional(),
     wip: z.boolean().default(false),
     period: z.string().optional(),
-    featuredOnHome: z.boolean().default(false),
-    pinnedToTop: z.boolean().default(false),
+    // Single source of truth: `selected: true` lands the project in the
+    // "Selected Projects" section on both the homepage and the Projects page;
+    // everything else falls into "Other Projects".
+    selected: z.boolean().default(false),
     homeDescription: z.string().optional(),
     order: z.number().default(99),
     source_hash: z.string().optional(),

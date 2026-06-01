@@ -5,7 +5,6 @@ description: "Construction et analyse de réseaux de collaboration GitHub à gra
 tags: [Python, igraph, Algorithme de Louvain, Analyse de réseaux, Big Data]
 wip: false
 period: "Fév 2026 – Mai 2026"
-featuredOnHome: false
 order: 5
 ---
 

@@ -8,7 +8,6 @@ demo: https://joo-yan.github.io/ParisSocioElect-ElectionsMunicipales2026
 repo: https://github.com/Joo-Yan/ParisSocioElect-ElectionsMunicipales2026
 wip: false
 period: "Mars 2026"
-featuredOnHome: true
 order: 2
 ---
 

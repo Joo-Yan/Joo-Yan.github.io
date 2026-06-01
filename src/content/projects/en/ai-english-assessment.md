@@ -5,8 +5,7 @@ description: "Full stack prototype built in a team of two: API routes for record
 tags: [Next.js, TypeScript, Supabase, Vercel]
 wip: false
 period: "Jan 2025 – Apr 2025"
-featuredOnHome: true
-pinnedToTop: true
+selected: true
 order: 3
 ---
 

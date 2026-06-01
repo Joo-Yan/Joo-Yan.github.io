@@ -7,7 +7,7 @@ demo: https://learning-and-projects-tracker.vercel.app/
 repo: https://github.com/Joo-Yan/StudyTracker
 wip: false
 period: "Mar 2026"
-featuredOnHome: true
+selected: false
 homeDescription: "Used Claude Code to build a full-stack web app with 9 integrated modules backed by a 12-model relational PostgreSQL schema; implemented Supabase OAuth with per-route user scoping; and shipped a fully client-side bilingual interactive learn center with code viewer, diagrams, API explorer, and inline quizzes."
 order: 0
 ---

@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { LANGUAGES, t, type Lang } from '../../i18n/translations';
 import { getCollection } from 'astro:content';
 import { withBase } from '../../utils/paths';
-import { parsePeriod } from '../../utils/projects';
+import { getProjectGroups } from '../../utils/projects';
 import SelectedProjects from '../../components/SelectedProjects.astro';
 
 export async function getStaticPaths() {
@@ -14,16 +14,8 @@ const { lang } = Astro.params as { lang: Lang };
 const tr = t(lang);
 
 const allProjects = await getCollection('projects');
-const enProjects = allProjects
-  .filter(e => e.id.startsWith('en/'))
-  .sort((a, b) => parsePeriod(b.data.period) - parsePeriod(a.data.period));
-
-// For each EN project, use the lang version if it has real content, else fall back to EN
-const projects = enProjects.map(enEntry => {
-  const projectId = enEntry.id.replace('en/', '');
-  const langEntry = allProjects.find(e => e.id === `${lang}/${projectId}`);
-  return (langEntry && langEntry.body?.trim()) ? langEntry : enEntry;
-});
+// "Other Projects" only — the selected ones are rendered by <SelectedProjects>.
+const { other: projects } = getProjectGroups(allProjects, lang);
 ---
 
 <Layout lang={lang} title={tr.projects.title}>
