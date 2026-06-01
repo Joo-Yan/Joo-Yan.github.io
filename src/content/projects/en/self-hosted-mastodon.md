@@ -6,6 +6,7 @@ tags: [Linux, Nginx, PostgreSQL]
 wip: false
 period: "Jun 2023 – Present"
 featuredOnHome: true
+pinnedToTop: true
 order: 1
 ---
 
