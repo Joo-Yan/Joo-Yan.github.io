@@ -28,6 +28,7 @@ export type Translation = {
       languages: string;
       frameworks: string;
       tools: string;
+      domains: string;
     };
   };
   projects: {
@@ -35,6 +36,8 @@ export type Translation = {
     wip: string;
     demo: string;
     code: string;
+    selected: string;
+    all: string;
   };
   about: {
     title: string;
@@ -82,6 +85,7 @@ export const translations: Record<Lang, Translation> = {
         languages: '编程语言',
         frameworks: '框架',
         tools: '工具',
+        domains: '领域',
       },
     },
     projects: {
@@ -89,6 +93,8 @@ export const translations: Record<Lang, Translation> = {
       wip: '进行中',
       demo: 'Demo',
       code: '代码',
+      selected: '精选项目',
+      all: '其他项目',
     },
     about: {
       title: '关于我',
@@ -135,6 +141,7 @@ export const translations: Record<Lang, Translation> = {
         languages: 'Languages',
         frameworks: 'Frameworks',
         tools: 'Tools',
+        domains: 'Domains',
       },
     },
     projects: {
@@ -142,6 +149,8 @@ export const translations: Record<Lang, Translation> = {
       wip: 'WIP',
       demo: 'Demo',
       code: 'Code',
+      selected: 'Selected Projects',
+      all: 'Other Projects',
     },
     about: {
       title: 'About',
@@ -188,6 +197,7 @@ export const translations: Record<Lang, Translation> = {
         languages: 'Langages',
         frameworks: 'Frameworks',
         tools: 'Outils',
+        domains: 'Domaines',
       },
     },
     projects: {
@@ -195,6 +205,8 @@ export const translations: Record<Lang, Translation> = {
       wip: 'En cours',
       demo: 'Demo',
       code: 'Code',
+      selected: 'Projets sélectionnés',
+      all: 'Autres projets',
     },
     about: {
       title: 'À propos',

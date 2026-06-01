@@ -41,7 +41,8 @@ export const education = [
 // ─── Skills ──────────────────────────────────────────────────────────────────
 
 export const skills = {
-  languages: ['Python', 'JavaScript', 'TypeScript', 'SQL'],
-  frameworks: ['Next.js', 'React', 'Flask', 'Astro'],
-  tools: ['Docker', 'PostgreSQL', 'Linux', 'Git', 'Nginx'],
+  languages: ['Python', 'SQL'],
+  frameworks: ['Next.js', 'Astro'],
+  tools: ['Docker', 'Linux', 'Git', 'Nginx', 'CI/CD (GitHub Actions)', 'Supabase', 'Vercel', 'Claude Code'],
+  domains: ['Full Stack Development', 'AI Integration', 'Machine Learning Pipelines'],
 };

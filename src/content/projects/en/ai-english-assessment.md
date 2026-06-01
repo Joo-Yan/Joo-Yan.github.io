@@ -6,6 +6,7 @@ tags: [Next.js, TypeScript, Supabase, Vercel]
 wip: false
 period: "Jan 2025 – Apr 2025"
 featuredOnHome: true
+pinnedToTop: true
 order: 3
 ---
 

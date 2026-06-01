@@ -13,6 +13,7 @@ const projects = defineCollection({
     wip: z.boolean().default(false),
     period: z.string().optional(),
     featuredOnHome: z.boolean().default(false),
+    pinnedToTop: z.boolean().default(false),
     homeDescription: z.string().optional(),
     order: z.number().default(99),
     source_hash: z.string().optional(),
