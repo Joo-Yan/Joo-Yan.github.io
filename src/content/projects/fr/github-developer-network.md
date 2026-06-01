@@ -27,6 +27,6 @@ Une transition structurelle nette est apparue autour de 2022 : le réseau est pa
 Les écosystèmes par langage ont divergé de manière significative. JavaScript et HTML ont connu une forte concentration des collaborations (moins de communautés, mais bien plus d'arêtes), tandis que C++ et Java ont affiché une contraction globale des co-contributions publiques.
 
 ## Recul
-Pour être honnête, bien que nous ayons réussi à construire le pipeline, nous n'avons pas été en mesure de tirer des conclusions particulièrement solides, en raison de données limitées, d'algorithmes d'évaluation imprécis et d'une direction de recherche insuffisamment définie.
+Pour être honnête, d'après moi, bien que nous ayons réussi à construire le pipeline, nous n'avons pas été en mesure de tirer des conclusions particulièrement solides, en raison de données limitées, d'algorithmes d'évaluation imprécis et d'une direction de recherche insuffisamment définie.
 
 Bien que le sujet choisi portât sur l'impact des grands modèles de langage (LLMs) sur l'écosystème de collaboration open-source, la méthodologie n'a examiné les changements que sous un angle chronologique. Elle n'a pas permis de mesurer l'influence spécifique des LLMs ni de tenir compte d'autres événements survenus durant la même période. Par ailleurs, la mesure dans laquelle GitHub peut véritablement représenter l'open-source reste un sujet à approfondir.

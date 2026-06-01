@@ -28,7 +28,7 @@ A clear structural transition emerged around 2022: the network shifted from expa
 Language ecosystems diverged significantly. JavaScript and HTML saw heavy collaboration concentration (fewer communities, far more edges), while C++ and Java experienced an overall contraction in public co-contributions.
 
 ## Step Back
-To be honest, while we successfully built the pipeline, we were unable to draw particularly effective conclusions due to limited data, imprecise evaluation algorithms, and an insufficiently clear research direction.
+To be honest, in my opinion, while we successfully built the pipeline, we were unable to draw particularly effective conclusions due to limited data, imprecise evaluation algorithms, and an insufficiently clear research direction.
 
 Although the chosen topic focused on the impact of Large Language Models (LLMs) on the open-source software collaboration ecosystem, the methodology only examined changes from a chronological perspective. It failed to measure the specific influence of LLMs or account for other events occurring during the same period. Additionally, the extent to which GitHub can truly represent open source remains a subject for further research.
 
