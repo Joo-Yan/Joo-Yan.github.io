@@ -1,8 +1,8 @@
 ---
 source_hash: manual
 id: speaking-assessment
-title: Prototype d'évaluation orale d'anglais par IA pour une start-up 
-description: "Développé le backend Next.js : routes API pour les soumissions audio, pipeline d'évaluation vocale, schéma Supabase et documentation de déploiement."
+title: Prototype d'évaluation orale d'anglais par IA pour une start-up (AAIL)
+description: "Prototype full stack développé en binôme : routes API pour les soumissions audio, pipeline d'évaluation vocale, schéma Supabase et documentation de déploiement. Intégré par la suite dans le produit de AAIL, sayo AI."
 tags: [Next.js, TypeScript, Supabase, Vercel]
 wip: false
 period: "Jan 2025 – Avr 2025"
@@ -10,17 +10,16 @@ featuredOnHome: true
 order: 3
 ---
 
-C'était un projet d'équipe réalisé lors de ma dernière année à la CUHK-SZ. Ma contribution était le backend : un ensemble de routes API Next.js gérant l'intégralité du pipeline de traitement audio.
+C'était un projet réalisé en binôme lors de ma dernière année à la CUHK-SZ, comme prototype pour la start-up AAIL. Ce prototype a ensuite été intégré dans leur produit, sayo AI.
 
-Le défi central était d'orchestrer des opérations asynchrones : un enregistrement arrive, est validé, envoyé à une API tierce d'évaluation vocale, la réponse est analysée, un score et une transcription sont retournés, et tout est écrit dans Supabase. Concevoir le schéma correctement — horodatages, compteurs de tentatives, blobs de retour — a pris plusieurs itérations.
+L'outil aide les lycéens hongkongais à préparer l'épreuve orale d'anglais du HKDSE — plus précisément le composant de discussion en groupe, où quatre candidats tiennent une discussion en anglais sur un sujet désigné. Notre prototype prend en charge la vidéo en temps réel pour quatre participants et, à l'issue de chaque session, fournit des scores et des suggestions d'amélioration basés sur les critères officiels du HKDSE. La fonctionnalité de vidéo en temps réel est alimentée par des API tierces.
 
-J'ai aussi rédigé la documentation de déploiement. Pas glamour, mais ça compte. Un système que seul le développeur original peut déployer n'est pas vraiment terminé.
 
 ## Tech Stack
 
 | Couche | Outils |
 |--------|--------|
-| Framework | Next.js (App Router) |
+| Framework | Next.js |
 | Langage | TypeScript |
 | Base de données | Supabase (PostgreSQL) |
 | Déploiement | Vercel |
