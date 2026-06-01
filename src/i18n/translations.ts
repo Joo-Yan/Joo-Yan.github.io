@@ -114,7 +114,7 @@ export const translations: Record<Lang, Translation> = {
     },
     hero: {
       tagline: 'Engineering student',
-      available: 'Paris · Open to internships (Jul - Aug) and alternance (Sept 2026, 1 year)',
+      available: 'Paris · Looking for alternance (Sept 2026, 1 year)',
       whyMe: 'Why Me',
       github: 'GitHub',
       email: 'Email',
@@ -167,7 +167,7 @@ export const translations: Record<Lang, Translation> = {
     },
     hero: {
       tagline: 'Étudiante ingénieure',
-      available: 'Paris · Recherche stage (Jul - Aug) et alternance (Sept 2026, 1 an)',
+      available: 'Paris · Recherche alternance (Sept 2026, 1 an)',
       whyMe: 'Why Me',
       github: 'GitHub',
       email: 'E-mail',

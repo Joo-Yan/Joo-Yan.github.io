@@ -8,6 +8,11 @@ export const education = [
       en: 'General Engineering Program (2nd year)',
       fr: 'Programme Grande École (2e année)',
     },
+    specialization: {
+      zh: '专业方向：AI 模型与应用',
+      en: 'Specialization: AI Models and Applications',
+      fr: 'Spécialisation : Modèles et applications de l\'IA',
+    },
     period: 'Sep 2025 – Present',
     location: 'Évry, France',
     note: {

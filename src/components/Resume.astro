@@ -43,6 +43,11 @@ const homeProjects = enProjects.map(enEntry => {
               <p class="text-base text-[var(--color-muted)] font-serif italic">
                 {edu.degree[lang]}
               </p>
+              {edu.specialization && (
+                <p class="text-sm text-[var(--color-muted)] font-sans tracking-wide">
+                  {edu.specialization[lang]}
+                </p>
+              )}
               {edu.note && (
                 <p class="text-sm text-[var(--color-muted)] font-sans tracking-wide">
                   {edu.note[lang]}
