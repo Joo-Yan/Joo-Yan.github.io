@@ -41,7 +41,11 @@ export interface ProjectGroups {
 export function getProjectGroups(allProjects: ProjectEntry[], lang: string): ProjectGroups {
   const enProjects = allProjects
     .filter(e => e.id.startsWith('en/'))
-    .sort((a, b) => parsePeriod(b.data.period) - parsePeriod(a.data.period));
+    .sort((a, b) => {
+      const byPeriod = parsePeriod(b.data.period) - parsePeriod(a.data.period);
+      if (byPeriod !== 0) return byPeriod;
+      return (a.data.order ?? 99) - (b.data.order ?? 99);
+    });
 
   const toLangEntry = (enEntry: ProjectEntry): ProjectEntry => {
     const projectId = enEntry.id.replace('en/', '');
