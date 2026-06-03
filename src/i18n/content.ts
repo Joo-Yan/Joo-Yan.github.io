@@ -30,11 +30,11 @@ export const education = [
     },
     period: 'Sep 2021 – May 2025',
     location: 'Shenzhen, China',
-    note: {
-      zh: '2024年春赴 ISEP 巴黎交流',
-      en: 'Exchange at ISEP Paris, Feb–Jun 2024',
-      fr: 'Échange à l\'ISEP Paris, fév–juin 2024',
-    },
+    // note: {
+    //   zh: '2024年春赴 ISEP 巴黎交流',
+    //   en: 'Exchange at ISEP Paris, Feb–Jun 2024',
+    //   fr: 'Échange à l\'ISEP Paris, fév–juin 2024',
+    // },
   },
 ];
 
